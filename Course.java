@@ -106,14 +106,8 @@ public class Course {
     }
     
 
-    /*public void displayCourse () {
+    public void displayCourse () {
         System.out.println("-----------------WELCOME TO DUOMINGO!-----------------");
         System.out.println("");
-        System.out.println("Course ID: " + courseID);
-        System.out.println("Course Name: " + courseName);
-        System.out.println("Course Details: " + courseDetails);
-        System.out.println("Course Content: " + courseContent);
-        System.out.println("Course Duration: " + courseDuration);
-        System.out.println("Course Difficulty: " + courseLevel);
-    }*/  
+    } 
 }
