@@ -5,10 +5,12 @@ public class Course {
     private double courseDuration;
     private double coursePercentage;
     private String courseLevel;
+    private String courseDetails;
 
-    public Course (String courseID, String courseName, String courseContent, double courseDuration, double coursePercentage, String courseLevel) {
+    public Course (String courseID, String courseName,String courseDetails, String courseContent, double courseDuration, double coursePercentage, String courseLevel) {
         this.courseID = courseID;
         this.courseName = courseName;
+        this.courseDetails = courseDetails;
         this.courseContent = courseContent;
         this.courseDuration = courseDuration;
         this.coursePercentage = coursePercentage;
@@ -21,6 +23,10 @@ public class Course {
 
     public String getCourseName() {
         return courseName;
+    }
+
+    public String getCourseDetails() {
+        return courseDetails;
     }
 
     public String getCourseContent() {
@@ -45,6 +51,10 @@ public class Course {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public void setCourseDetails(String courseDetails) {
+        this.courseDetails = courseDetails;
     }
 
     public void setCourseContent(String courseContent) {
@@ -91,6 +101,7 @@ public class Course {
         System.out.println("");
         System.out.println("Course ID: " + courseID);
         System.out.println("Course Name: " + courseName);
+        System.out.println("Course Details: " + courseDetails);
         System.out.println("Course Content: " + courseContent);
         System.out.println("Course Duration: " + courseDuration);
         System.out.println("Course Difficulty: " + courseLevel);
