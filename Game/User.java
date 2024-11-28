@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.List;
+
 public class User {
     private String userID;
     private String userName;
@@ -7,16 +9,21 @@ public class User {
     private String email;
     private String birthday;
     private String currentCourse;
-    private String achievements;
+    private List<String> achievements;
+    private String mainLanguage;
 
-    public User(String userID, String userName, String password, String email, String birthday) {
+    public User() {}
+
+    public User(String userID, String userName, String password, String email, String birthday, String currentCourse,
+                String mainLanguage, List<String> achievements) {
         this.userID = userID;
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.birthday = birthday;
-        this.currentCourse = null;
-        this.achievements = "";
+        this.currentCourse = currentCourse;
+        this.mainLanguage = mainLanguage;
+        this.achievements = achievements;
     }
 
     // Getters and Setters
@@ -68,20 +75,19 @@ public class User {
         this.currentCourse = currentCourse;
     }
 
-    public String getAchievements() {
+    public List<String> getAchievements() {
         return achievements;
     }
 
-    public void setAchievements(String achievements) {
+    public void setAchievements(List<String> achievements) {
         this.achievements = achievements;
     }
 
-    public void displayUser() {
-        System.out.println("User ID: " + userID);
-        System.out.println("User Name: " + userName);
-        System.out.println("Email: " + email);
-        System.out.println("Birthday: " + birthday);
-        System.out.println("Current Course: " + currentCourse);
-        System.out.println("Achievements: " + achievements);
+    public String getMainLanguage() {
+        return mainLanguage;
+    }
+
+    public void setMainLanguage(String mainLanguage) {
+        this.mainLanguage = mainLanguage;
     }
 }

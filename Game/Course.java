@@ -5,35 +5,42 @@ import javax.swing.*;
 public class Course {
     public static void displayCourse(User user) {
         CourseDetails currentCourse = getCurrentCourseDetails(user.getCurrentCourse());
-
         if (currentCourse != null) {
             boolean continueCourse = true;
             while (continueCourse) {
-                String[] options = {"Display Course", "Enroll Course", "Start Course", "Complete Lesson", "Resume Course", "Change Course", "Exit"};
-                int choice = JOptionPane.showOptionDialog(null, "Select an option", "Course Management", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                // Adjust the difficulty level based on the user's main language
+                String adjustedDifficulty = adjustDifficulty(currentCourse.getDifficulty(), currentCourse.getLanguages(), user.getMainLanguage());
+
+                String[] options = {
+                    "Start Course",
+                    "Resume Course",
+                    "Course Achievement",
+                    "Change Course",
+                    "Exit"
+                };
+
+                int choice = JOptionPane.showOptionDialog(null,
+                        "Selected Course: " + currentCourse.getCourseName() + "\n" +
+                        "Difficulty: " + adjustedDifficulty + "\n" +
+                        "Description: " + currentCourse.getCourseDescription(),
+                        "Course Management",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                        null, options, options[0]);
 
                 switch (choice) {
                     case 0:
-                        currentCourse.displayCourse();
+                        JOptionPane.showMessageDialog(null, "Course starting...");
                         break;
                     case 1:
-                        currentCourse.enrollCourse();
+                        JOptionPane.showMessageDialog(null, "Resuming course...");
                         break;
                     case 2:
-                        currentCourse.startCourse();
+                        JOptionPane.showMessageDialog(null, "Achievements functionality is under construction.");
                         break;
                     case 3:
-                        int lessonCompleted = Integer.parseInt(JOptionPane.showInputDialog("Enter lessons completed:"));
-                        int totalLessons = Integer.parseInt(JOptionPane.showInputDialog("Enter total lessons:"));
-                        currentCourse.completeLesson(lessonCompleted, totalLessons);
-                        break;
-                    case 4:
-                        currentCourse.resumeCourse();
-                        break;
-                    case 5:
                         changeCourse(user);
                         break;
-                    case 6:
+                    case 4:
                         continueCourse = false;
                         break;
                     default:
@@ -46,7 +53,8 @@ public class Course {
     }
 
     private static CourseDetails getCurrentCourseDetails(String courseName) {
-        for (CourseDetails course : CourseDatabase.getCourses()) {
+        CourseDetails[] courses = CourseDatabase.getCourses();
+        for (CourseDetails course : courses) {
             if (course.getCourseName().equals(courseName)) {
                 return course;
             }
@@ -61,18 +69,39 @@ public class Course {
         }
     }
 
-    private static void selectCourse(User user) {
+    static void selectCourse(User user) {
         CourseDetails[] courses = CourseDatabase.getCourses();
         String[] courseOptions = new String[courses.length];
         for (int i = 0; i < courses.length; i++) {
             courseOptions[i] = courses[i].getCourseName();
         }
-
-        String selectedCourse = (String) JOptionPane.showInputDialog(null, "Select a course", "Course Selection", JOptionPane.QUESTION_MESSAGE, null, courseOptions, courseOptions[0]);
-
+        String selectedCourse = (String) JOptionPane.showInputDialog(null,
+                "Select a course",
+                "Course Selection",
+                JOptionPane.QUESTION_MESSAGE,
+                null, courseOptions, courseOptions[0]);
         if (selectedCourse != null) {
             user.setCurrentCourse(selectedCourse);
             JOptionPane.showMessageDialog(null, "Course selected successfully!");
+        }
+    }
+
+    private static String adjustDifficulty(String defaultDifficulty, String[] courseLanguages, String userMainLanguage) {
+        for (String language : courseLanguages) {
+            if (language.equalsIgnoreCase(userMainLanguage)) {
+                return defaultDifficulty; // No change if the user's language matches
+            }
+        }
+        // Increase difficulty for non-matching languages
+        switch (defaultDifficulty.toLowerCase()) {
+            case "easy":
+                return "Intermediate";
+            case "intermediate":
+                return "Hard";
+            case "hard":
+                return "Very Hard";
+            default:
+                return "Unknown";
         }
     }
 }

@@ -1,54 +1,88 @@
 package Game;
 
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
+import javax.swing.JOptionPane;
+import com.google.gson.*;
 
 public class UserDatabase {
-    private static ArrayList<User> users = new ArrayList<>();
+    private static final String DB_FILE = "C:/Users/Ransss/Documents/GitHub/Finals/Finals/src/Game/users.json";
+    private static Map<String, User> userMap = new HashMap<>();
 
     static {
-        for (User user : getUsers()) {
-            users.add(user);
+        loadDatabase();
+    }
+
+    public static void loadDatabase() {
+        File file = new File(DB_FILE);
+        if (!file.exists()) {
+            System.out.println("Database file not found at: " + file.getAbsolutePath());
+            saveDatabase();
+            return;
+        }
+        try (Reader reader = new FileReader(DB_FILE)) {
+            Gson gson = new Gson();
+            User[] users = gson.fromJson(reader, User[].class);
+            if (users != null) {
+                for (User user : users) {
+                    userMap.put(user.getUserID(), user);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the database: " + e.getMessage());
         }
     }
 
-    public static User[] getUsers() {
-        return new User[]{
-            new User("001", "Juan", "password123", "juan@example.com", "1990-01-01"),
-            new User("002", "Maria", "mypass456", "maria@example.com", "1992-02-02"),
-            new User("003", "Pedro", "password789", "pedro@example.com", "1994-03-03"),
-            new User("004", "Ana", "mypassword", "ana@example.com", "1996-04-04"),
-            new User("005", "Carlos", "password000", "carlos@example.com", "1998-05-05")
-        };
+    public static void saveDatabase() {
+        File file = new File(DB_FILE);
+        file.getParentFile().mkdirs(); 
+        try (Writer writer = new FileWriter(file)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(userMap.values(), writer);
+        } catch (IOException e) {
+            System.out.println("Error saving the database: " + e.getMessage());
+        }
     }
 
     public static void addUser(User user) {
-        users.add(user);
+        if (userMap.containsKey(user.getUserID())) {
+            JOptionPane.showMessageDialog(null, "User ID already exists. Please use a unique ID.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            userMap.put(user.getUserID(), user);
+            saveDatabase();
+            JOptionPane.showMessageDialog(null, "User added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public static User getUser(String userID) {
-        for (User user : users) {
-            if (user.getUserID().equals(userID)) {
-                return user;
-            }
-        }
-        return null;
+        return userMap.get(userID);
     }
 
     public static void updateUser(User user) {
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getUserID().equals(user.getUserID())) {
-                users.set(i, user);
-                return;
-            }
+        if (userMap.containsKey(user.getUserID())) {
+            userMap.put(user.getUserID(), user);
+            saveDatabase();
+            JOptionPane.showMessageDialog(null, "User updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "User not found. Update failed.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public static ArrayList<User> getAllUsers() {
-        return new ArrayList<>(users);
+    public static void deleteUser(String userID) {
+        if (userMap.remove(userID) != null) {
+            saveDatabase();
+            JOptionPane.showMessageDialog(null, "User deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "User not found. Delete failed.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static List<User> getAllUsers() {
+        return new ArrayList<>(userMap.values());
     }
 
     public static boolean validateUser(String userID, String password) {
-        User user = getUser(userID);
+        User user = userMap.get(userID);
         return user != null && user.getPassword().equals(password);
     }
 }

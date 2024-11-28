@@ -1,14 +1,28 @@
 package Game;
 
+import com.google.gson.*;
+import java.io.*;
+import java.util.*;
+
 public class CourseDatabase {
+
+    private static List<CourseDetails> courses;
+
+    static {
+        loadCourses();
+    }
+
+    private static void loadCourses() {
+        try (Reader reader = new FileReader("C:/Users/Ransss/Documents/GitHub/Finals/Finals/src/Game/courses.json")) {
+            Gson gson = new Gson();
+            CourseDetails[] courseArray = gson.fromJson(reader, CourseDetails[].class);
+            courses = Arrays.asList(courseArray);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static CourseDetails[] getCourses() {
-        return new CourseDetails[]{
-            new CourseDetails("ESP-103", "Spanish", "Vocabulary, Grammar, Pronunciation", 120, 0.0, "Beginner"),
-            new CourseDetails("JAP-102", "Japanese", "Vocabulary, Grammar, Pronunciation", 100, 0.0, "Intermediate"),
-            new CourseDetails("FIL-111", "Filipino", "Vocabulary, Grammar, Pronunciation", 110, 0.0, "Beginner"),
-            new CourseDetails("ENG-112", "English", "Vocabulary, Grammar, Pronunciation", 100, 0.0, "Advanced"),
-            new CourseDetails("FRE-104", "French", "Vocabulary, Grammar, Pronunciation", 110, 0.0, "Intermediate"),
-            new CourseDetails("HIL-113", "Hiligaynon", "Vocabulary, Grammar, Pronunciation", 90, 0.0, "Intermediate")
-        };
+        return courses.toArray(new CourseDetails[0]);
     }
 }

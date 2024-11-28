@@ -1,0 +1,70 @@
+[
+  {
+    "userID": "000",
+    "userName": "Joshua David Ranin",
+    "password": "000",
+    "email": "janesmith@example.com",
+    "birthday": "1990-08-25",
+    "currentCourse": "Spanish",
+    "achievements": [
+      "Achievement 1",
+      "Achievement 2"
+    ],
+    "mainLanguage": "English"
+  },
+  {
+    "achievements": []
+  },
+  {
+    "userID": "3M4N5O",
+    "userName": "alex99",
+    "password": "alexworld",
+    "email": "alex99@example.com",
+    "birthday": "1988-02-28",
+    "currentCourse": "French",
+    "achievements": [
+      "Achievement 1",
+      "Achievement 2"
+    ],
+    "mainLanguage": "English"
+  },
+  {
+    "userID": "1A2B3C",
+    "userName": "johndoe23",
+    "password": "pass1234",
+    "email": "johndoe23@example.com",
+    "birthday": "1995-05-15",
+    "currentCourse": "Japanese",
+    "achievements": [
+      "Achievement 1",
+      "Achievement 2"
+    ],
+    "mainLanguage": "English"
+  },
+  {
+    "userID": "0J1K2L",
+    "userName": "emilyb",
+    "password": "emilysecure",
+    "email": "emilyb@example.com",
+    "birthday": "2001-04-20",
+    "currentCourse": "Filipino",
+    "achievements": [
+      "Achievement 1",
+      "Achievement 2"
+    ],
+    "mainLanguage": "English"
+  },
+  {
+    "userID": "7G8H9I",
+    "userName": "mike2023",
+    "password": "mikesecret",
+    "email": "mike2023@example.com",
+    "birthday": "1998-12-12",
+    "currentCourse": "Filipino",
+    "achievements": [
+      "Achievement 1",
+      "Achievement 2"
+    ],
+    "mainLanguage": "English"
+  }
+]
