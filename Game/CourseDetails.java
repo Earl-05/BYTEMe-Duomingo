@@ -62,6 +62,7 @@ public class CourseDetails {
     }
 
     public void courseCompleted () {
+        System.out.println("You successfully completed");
 
     }
 }
