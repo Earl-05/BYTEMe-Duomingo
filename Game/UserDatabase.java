@@ -7,7 +7,7 @@ import com.google.gson.*;
 
 public class UserDatabase {
     private static final String DB_FILE = "C:/Users/Ransss/Documents/GitHub/Finals/Finals/src/Game/users.json";
-    private static Map<String, User> userMap = new HashMap<>();
+    private static Map<String, UserDetails> userMap = new HashMap<>();
 
     static {
         loadDatabase();
@@ -22,10 +22,10 @@ public class UserDatabase {
         }
         try (Reader reader = new FileReader(DB_FILE)) {
             Gson gson = new Gson();
-            User[] users = gson.fromJson(reader, User[].class);
+            UserDetails[] users = gson.fromJson(reader, UserDetails[].class);
             if (users != null) {
-                for (User user : users) {
-                    userMap.put(user.getUserID(), user);
+                for (UserDetails userDetails : users) {
+                    userMap.put(userDetails.getUserID(), userDetails);
                 }
             }
         } catch (IOException e) {
@@ -44,23 +44,23 @@ public class UserDatabase {
         }
     }
 
-    public static void addUser(User user) {
-        if (userMap.containsKey(user.getUserID())) {
+    public static void addUser(UserDetails userDetails) {
+        if (userMap.containsKey(userDetails.getUserID())) {
             JOptionPane.showMessageDialog(null, "User ID already exists. Please use a unique ID.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            userMap.put(user.getUserID(), user);
+            userMap.put(userDetails.getUserID(), userDetails);
             saveDatabase();
             JOptionPane.showMessageDialog(null, "User added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
-    public static User getUser(String userID) {
+    public static UserDetails getUser(String userID) {
         return userMap.get(userID);
     }
 
-    public static void updateUser(User user) {
-        if (userMap.containsKey(user.getUserID())) {
-            userMap.put(user.getUserID(), user);
+    public static void updateUser(UserDetails userDetails) {
+        if (userMap.containsKey(userDetails.getUserID())) {
+            userMap.put(userDetails.getUserID(), userDetails);
             saveDatabase();
             JOptionPane.showMessageDialog(null, "User updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -77,12 +77,12 @@ public class UserDatabase {
         }
     }
 
-    public static List<User> getAllUsers() {
+    public static List<UserDetails> getAllUsers() {
         return new ArrayList<>(userMap.values());
     }
 
     public static boolean validateUser(String userID, String password) {
-        User user = userMap.get(userID);
-        return user != null && user.getPassword().equals(password);
+        UserDetails userDetails = userMap.get(userID);
+        return userDetails != null && userDetails.getPassword().equals(password);
     }
 }

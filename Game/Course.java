@@ -2,14 +2,15 @@ package Game;
 
 import javax.swing.*;
 
+
 public class Course {
-    public static void displayCourse(User user) {
-        CourseDetails currentCourse = getCurrentCourseDetails(user.getCurrentCourse());
+    public static void displayCourse(UserDetails userDetails) {
+        CourseDetails currentCourse = getCurrentCourseDetails(userDetails.getCurrentCourse());
         if (currentCourse != null) {
             boolean continueCourse = true;
             while (continueCourse) {
                 // Adjust the difficulty level based on the user's main language
-                String adjustedDifficulty = adjustDifficulty(currentCourse.getDifficulty(), currentCourse.getLanguages(), user.getMainLanguage());
+                String adjustedDifficulty = adjustDifficulty(currentCourse.getDifficulty(), currentCourse.getLanguages(), userDetails.getMainLanguage());
 
                 String[] options = {
                     "Start Course",
@@ -38,7 +39,7 @@ public class Course {
                         JOptionPane.showMessageDialog(null, "Achievements functionality is under construction.");
                         break;
                     case 3:
-                        changeCourse(user);
+                        changeCourse(userDetails);
                         break;
                     case 4:
                         continueCourse = false;
@@ -62,14 +63,14 @@ public class Course {
         return null;
     }
 
-    private static void changeCourse(User user) {
+    private static void changeCourse(UserDetails userDetails) {
         int confirm = JOptionPane.showConfirmDialog(null, "Changing the course will lose all progress. Do you want to continue?");
         if (confirm == JOptionPane.YES_OPTION) {
-            selectCourse(user);
+            selectCourse(userDetails);
         }
     }
 
-    static void selectCourse(User user) {
+    static void selectCourse(UserDetails userDetails) {
         CourseDetails[] courses = CourseDatabase.getCourses();
         String[] courseOptions = new String[courses.length];
         for (int i = 0; i < courses.length; i++) {
@@ -81,7 +82,7 @@ public class Course {
                 JOptionPane.QUESTION_MESSAGE,
                 null, courseOptions, courseOptions[0]);
         if (selectedCourse != null) {
-            user.setCurrentCourse(selectedCourse);
+            userDetails.setCurrentCourse(selectedCourse);
             JOptionPane.showMessageDialog(null, "Course selected successfully!");
         }
     }
