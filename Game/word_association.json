@@ -1,4 +1,4 @@
-{
+0{
       "Spanish": {
         "Beginner": [
           ["Apple", "Manzana"],
@@ -19,7 +19,7 @@
           ["Friend", "Amigo"],
           ["Love", "Amor"],
           ["Family", "Familia"],
-          ["Music", "Música"],
+          ["Music", "Musica"],
           ["Game", "Juego"]
         ],
         "Intermediate": [

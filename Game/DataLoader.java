@@ -10,11 +10,11 @@ import java.util.*;
 
 public class DataLoader {
 
-    private static final String READING_FILE = "C:/Users/Ransss/Documents/GitHub/Finals/Finals/src/Game/reading.json";
-    private static final String WORD_ASSOCIATION_FILE = "C:/Users/Ransss/Documents/GitHub/Finals/Finals/src/Game/word_association.json";
-    private static final String WORD_GUESSING_FILE = "C:/Users/Ransss/Documents/GitHub/Finals/Finals/src/Game/word_guessing.json";
+    private static final String READING_FILE = getFilePath("reading.json");
+    private static final String WORD_ASSOCIATION_FILE = getFilePath("word_association.json");
+    private static final String WORD_GUESSING_FILE = getFilePath("word_guessing.json");
 
-    public static Queue<String[]> loadReadingData(String language, int difficulty) {
+    public static LinkedList<String[]> loadReadingData(String language, int difficulty) {
         return loadData(READING_FILE, language, difficulty, new LinkedList<>());
     }
 
@@ -57,5 +57,10 @@ public class DataLoader {
             e.printStackTrace();
             return collection;
         }
+    }
+
+    private static String getFilePath(String fileName) {
+        String userDir = System.getProperty("user.dir");
+        return userDir + File.separator + "src" + File.separator + "Game" + File.separator + fileName;
     }
 }

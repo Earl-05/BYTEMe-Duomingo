@@ -10,7 +10,7 @@ public class User {
     public static void main(String[] args) {
         while (true) {
             String[] options = {"Log In", "Sign Up", "Display All Users", "Delete User", "Exit"};
-            int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO", "Main Menu",
+            int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO, For Testing: User ID: 000, Password: 000", "Main Menu",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
             switch (choice) {
@@ -67,11 +67,11 @@ public class User {
         List<String> achievements = new ArrayList<>();
 
         // Create a new User with all fields
-        UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, mainLanguage, achievements);
+        UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, achievements, mainLanguage, 0, 0, 0, 0);
         UserDatabase.addUser(newUser);
     }
 
-    private static void welcomeUser(UserDetails userDetails) {
+    static void welcomeUser(UserDetails userDetails) {
         // Create the main frame
         JFrame frame = new JFrame("Welcome Menu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,13 +81,13 @@ public class User {
         // Main panel for content
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBackground(new Color(240, 240, 240)); // Light background color
+        panel.setBackground(new Color(240, 240, 240));
 
         // Title label
         JLabel titleLabel = new JLabel("Welcome " + userDetails.getUserName() + "!");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         titleLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-        titleLabel.setForeground(new Color(60, 90, 150)); // Custom title color
+        titleLabel.setForeground(new Color(60, 90, 150));
         panel.add(titleLabel);
 
         // Add spacing
@@ -98,14 +98,11 @@ public class User {
                 "Email: <b>" + userDetails.getEmail() + "</b><br>" +
                 "Birthday: <b>" + userDetails.getBirthday() + "</b><br>" +
                 "Current Course: <b>" + (userDetails.getCurrentCourse() == null ? "N/A" : userDetails.getCurrentCourse()) + "</b><br>" +
-                "Achievements: <b>" + (userDetails.getAchievements().isEmpty() ? "None" : String.join(", ", userDetails.getAchievements())) + "</b><br>" +
                 "Main Language: <b>" + userDetails.getMainLanguage() + "</b>" +
                 "</html>");
         userInfo.setFont(new Font("Arial", Font.PLAIN, 14));
         userInfo.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         panel.add(userInfo);
-
-        // Add some padding between the user information and options
         panel.add(Box.createVerticalStrut(10));
 
         // Option buttons
@@ -116,18 +113,39 @@ public class User {
         // Process the selected option
         switch (choice) {
             case 0:
-                Game.startGame(userDetails); // Directly display the course information
+                Game.startGame(userDetails);
                 break;
             case 1:
-                Course.displayCourse(userDetails); // Directly display the course information
+                Course.displayCourse(userDetails);
                 break;
             case 2:
-                JOptionPane.showMessageDialog(null, "Achievements functionality is under construction.");
+                displayAchievements(userDetails); // Show achievements
                 break;
             case 3:
                 return;
             default:
                 JOptionPane.showMessageDialog(null, "Invalid option. Please try again.");
+        }
+    }
+
+    private static void displayAchievements(UserDetails userDetails) {
+        List<String> achievements = userDetails.getAchievements();
+
+        if (achievements == null || achievements.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "You have no achievements yet.", "Achievements", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            StringBuilder achievementsList = new StringBuilder("Your Achievements:\n\n");
+            for (String achievement : achievements) {
+                if (achievement != null && !achievement.trim().isEmpty()) {
+                    achievementsList.append("- ").append(achievement).append("\n");
+                }
+            }
+
+            if (achievementsList.toString().equals("Your Achievements:\n\n")) {
+                JOptionPane.showMessageDialog(null, "You have no valid achievements yet.", "Achievements", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, achievementsList.toString(), "Achievements", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
 
@@ -138,7 +156,6 @@ public class User {
             JOptionPane.showMessageDialog(null, "No users found.", "User List", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-
 
         int currentIndex = 0;
         while (true) {
@@ -151,7 +168,6 @@ public class User {
                     .append("Course: ").append(currentUser.getCurrentCourse()).append("\n")
                     .append("Main Language: ").append(currentUser.getMainLanguage()).append("\n");
 
-
             int option = JOptionPane.showOptionDialog(
                     null,
                     userDetail.toString(),
@@ -163,17 +179,17 @@ public class User {
                     "Next"
             );
 
-
             if (option == 0) { // Previous
                 currentIndex = (currentIndex - 1 + userDetails.size()) % userDetails.size();
-            } else if (option == 1) { // Next
+            } else if (option == 1) { // Next    
                 currentIndex = (currentIndex + 1) % userDetails.size();
             } else { // Close
                 break;
             }
         }
     }
-
+    
+    
 
     private static void deleteUser() {
         String userID = JOptionPane.showInputDialog("Enter User ID to delete:");

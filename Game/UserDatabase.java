@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import com.google.gson.*;
 
 public class UserDatabase {
-    private static final String DB_FILE = "C:/Users/Ransss/Documents/GitHub/Finals/Finals/src/Game/users.json";
+    private static final String DB_FILE = getDatabaseFilePath();
     private static Map<String, UserDetails> userMap = new HashMap<>();
 
     static {
@@ -35,7 +35,7 @@ public class UserDatabase {
 
     public static void saveDatabase() {
         File file = new File(DB_FILE);
-        file.getParentFile().mkdirs(); 
+        file.getParentFile().mkdirs();
         try (Writer writer = new FileWriter(file)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(userMap.values(), writer);
@@ -85,4 +85,44 @@ public class UserDatabase {
         UserDetails userDetails = userMap.get(userID);
         return userDetails != null && userDetails.getPassword().equals(password);
     }
+    
+    public static void updateStats(String userID, String gameType) {
+        UserDetails user = userMap.get(userID);
+        if (user == null) {
+            JOptionPane.showMessageDialog(null, "User not found. Update failed.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        switch (gameType) {
+            case "WAPlayed":
+                user.setWAPlayed(user.getWAPlayed() + 1);
+                break;
+            case "RPlayed":
+                user.setRPlayed(user.getRPlayed() + 1);
+                break;
+            case "WGPlayed":
+                user.setWGPlayed(user.getWGPlayed() + 1);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Invalid game type. Update failed.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+        }
+
+        // Update the total games played
+        user.setGamesPlayed(user.getGamesPlayed() + 1);
+
+        // Save the updated user data back to the database
+        userMap.put(userID, user); // Update the map
+        saveDatabase(); // Save changes to the JSON file
+
+        JOptionPane.showMessageDialog(null, "Stats updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+
+    private static String getDatabaseFilePath() {
+        String userDir = System.getProperty("user.dir");
+        return userDir + File.separator + "src" + File.separator + "Game" + File.separator + "users.json";
+    }
+    
+    
 }

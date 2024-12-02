@@ -7,10 +7,13 @@
     "birthday": "1990-08-25",
     "currentCourse": "Spanish",
     "achievements": [
-      "Achievement 1",
-      "Achievement 2"
+      "First Steps",
     ],
-    "mainLanguage": "English"
+    "mainLanguage": "English",
+    "gamesPlayed": 2,
+    "WAPlayed": 0,
+    "RPlayed": 1,
+    "WGPlayed": 1
   },
   {
     "userID": "3M4N5O",
@@ -20,10 +23,13 @@
     "birthday": "1988-02-28",
     "currentCourse": "French",
     "achievements": [
-      "Achievement 1",
-      "Achievement 2"
+      "First Steps"
     ],
-    "mainLanguage": "English"
+    "mainLanguage": "English",
+    "gamesPlayed": 5,
+    "WAPlayed": 2,
+    "RPlayed": 1,
+    "WGPlayed": 2
   },
   {
     "userID": "1A2B3C",
@@ -33,10 +39,14 @@
     "birthday": "1995-05-15",
     "currentCourse": "Japanese",
     "achievements": [
-      "Achievement 1",
-      "Achievement 2"
+      "First Steps",
+      "Guess Who?"
     ],
-    "mainLanguage": "English"
+    "mainLanguage": "English",
+    "gamesPlayed": 7,
+    "WAPlayed": 3,
+    "RPlayed": 2,
+    "WGPlayed": 2
   },
   {
     "userID": "0J1K2L",
@@ -46,10 +56,15 @@
     "birthday": "2001-04-20",
     "currentCourse": "Filipino",
     "achievements": [
-      "Achievement 1",
-      "Achievement 2"
+      "First Steps",
+      "Matchmaker",
+      "Bookworm Beginner"
     ],
-    "mainLanguage": "English"
+    "mainLanguage": "English",
+    "gamesPlayed": 10,
+    "WAPlayed": 4,
+    "RPlayed": 3,
+    "WGPlayed": 3
   },
   {
     "userID": "7G8H9I",
@@ -59,9 +74,15 @@
     "birthday": "1998-12-12",
     "currentCourse": "Filipino",
     "achievements": [
-      "Achievement 1",
-      "Achievement 2"
+      "First Steps",
+      "Matchmaker",
+      "Guess Who?",
+      "Bookworm Beginner"
     ],
-    "mainLanguage": "English"
+    "mainLanguage": "English",
+    "gamesPlayed": 12,
+    "WAPlayed": 5,
+    "RPlayed": 4,
+    "WGPlayed": 3
   }
 ]
