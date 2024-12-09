@@ -10,7 +10,7 @@ public class Reading extends GameBase {
 
     public Reading(int difficulty, String language) {
         super(difficulty, language);
-        LinkedList<String[]> sentenceList = DataLoader.loadReadingData(language, difficulty);
+        LinkedList<String[]> sentenceList = GameDatabase.loadReadingData(language, difficulty);
         Collections.shuffle(sentenceList); // Shuffle questions
         this.sentences = new LinkedList<>(sentenceList);
     }

@@ -42,6 +42,7 @@ public class Game {
                 case 3, -1 -> {
                     JOptionPane.showMessageDialog(null, "Thank you for playing! Your total score is: " + totalScore);
                     keepPlaying = false;
+                    User.welcomeUser(userDetails);
                 }
                 default -> JOptionPane.showMessageDialog(null, "Invalid choice, please try again.");
             }

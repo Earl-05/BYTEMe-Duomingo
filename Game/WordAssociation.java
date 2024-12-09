@@ -9,7 +9,7 @@ public class WordAssociation extends GameBase {
 
     public WordAssociation(int difficulty, String language) {
         super(difficulty, language);
-        this.wordPairs = DataLoader.loadWordAssociationData(language, difficulty);
+        this.wordPairs = GameDatabase.loadWordAssociationData(language, difficulty);
         Collections.shuffle(wordPairs); // Shuffle questions
     }
 

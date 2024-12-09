@@ -13,7 +13,6 @@ import java.util.*;
 public class Achievement {
 
     private static String getUserFilePath() {
-        // Dynamically generate the file path based on the current working directory.
         return Paths.get(System.getProperty("user.dir"), "src", "Game", "users.json").toString();
     }
 

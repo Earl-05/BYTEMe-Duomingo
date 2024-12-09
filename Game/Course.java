@@ -15,7 +15,6 @@ public class Course {
                 String[] options = {
                     "Start Course",
                     "Resume Course",
-                    "Course Achievement",
                     "Change Course",
                     "Exit"
                 };
@@ -30,19 +29,16 @@ public class Course {
 
                 switch (choice) {
                     case 0:
-                        JOptionPane.showMessageDialog(null, "Course starting...");
+                        Game.startGame(userDetails);
                         break;
                     case 1:
-                        JOptionPane.showMessageDialog(null, "Resuming course...");
+                        Game.startGame(userDetails);
                         break;
                     case 2:
-                        JOptionPane.showMessageDialog(null, "Achievements functionality is under construction.");
-                        break;
-                    case 3:
                         changeCourse(userDetails);
                         break;
-                    case 4:
-                        continueCourse = false;
+                    case 3:
+                        User.welcomeUser(userDetails);
                         break;
                     default:
                         break;

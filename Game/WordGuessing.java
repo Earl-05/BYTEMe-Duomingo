@@ -9,7 +9,7 @@ public class WordGuessing extends GameBase {
 
     public WordGuessing(int difficulty, String language) {
         super(difficulty, language);
-        Stack<String[]> wordList = DataLoader.loadWordGuessingData(language, difficulty);
+        Stack<String[]> wordList = GameDatabase.loadWordGuessingData(language, difficulty);
         Collections.shuffle(wordList); // Shuffle questions
         this.words = new Stack<>();
         this.words.addAll(wordList);
