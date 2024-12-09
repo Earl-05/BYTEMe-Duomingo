@@ -1,0 +1,103 @@
+[
+  {
+    "userID": "000",
+    "userName": "Joshua David Ranin",
+    "password": "000",
+    "email": "janesmith@example.com",
+    "birthday": "1990-08-25",
+    "currentCourse": "Spanish",
+    "achievements": [
+      "First Steps",
+      null
+    ],
+    "mainLanguage": "English",
+    "gamesPlayed": 2,
+    "WAPlayed": 0,
+    "RPlayed": 1,
+    "WGPlayed": 1
+  },
+  {
+    "userID": "3M4N5O",
+    "userName": "alex99",
+    "password": "alexworld",
+    "email": "alex99@example.com",
+    "birthday": "1988-02-28",
+    "currentCourse": "French",
+    "achievements": [
+      "First Steps"
+    ],
+    "mainLanguage": "English",
+    "gamesPlayed": 5,
+    "WAPlayed": 2,
+    "RPlayed": 1,
+    "WGPlayed": 2
+  },
+  {
+    "userID": "EARL05",
+    "userName": "powwtato",
+    "password": "palms123",
+    "email": "earlgwaps@gmail.com",
+    "birthday": "2005-05-02",
+    "currentCourse": "Japanese",
+    "achievements": [],
+    "mainLanguage": "Filipino",
+    "gamesPlayed": 0,
+    "WAPlayed": 0,
+    "RPlayed": 0,
+    "WGPlayed": 0
+  },
+  {
+    "userID": "1A2B3C",
+    "userName": "johndoe23",
+    "password": "pass1234",
+    "email": "johndoe23@example.com",
+    "birthday": "1995-05-15",
+    "currentCourse": "Japanese",
+    "achievements": [
+      "First Steps",
+      "Guess Who?"
+    ],
+    "mainLanguage": "English",
+    "gamesPlayed": 7,
+    "WAPlayed": 3,
+    "RPlayed": 2,
+    "WGPlayed": 2
+  },
+  {
+    "userID": "0J1K2L",
+    "userName": "emilyb",
+    "password": "emilysecure",
+    "email": "emilyb@example.com",
+    "birthday": "2001-04-20",
+    "currentCourse": "Filipino",
+    "achievements": [
+      "First Steps",
+      "Matchmaker",
+      "Bookworm Beginner"
+    ],
+    "mainLanguage": "English",
+    "gamesPlayed": 10,
+    "WAPlayed": 4,
+    "RPlayed": 3,
+    "WGPlayed": 3
+  },
+  {
+    "userID": "7G8H9I",
+    "userName": "mike2023",
+    "password": "mikesecret",
+    "email": "mike2023@example.com",
+    "birthday": "1998-12-12",
+    "currentCourse": "Filipino",
+    "achievements": [
+      "First Steps",
+      "Matchmaker",
+      "Guess Who?",
+      "Bookworm Beginner"
+    ],
+    "mainLanguage": "English",
+    "gamesPlayed": 12,
+    "WAPlayed": 5,
+    "RPlayed": 4,
+    "WGPlayed": 3
+  }
+]
