@@ -3,7 +3,8 @@ package Game;
 import java.io.*;
 import java.util.*;
 import javax.swing.JOptionPane;
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class UserDatabase {
     private static final String DB_FILE = getDatabaseFilePath();

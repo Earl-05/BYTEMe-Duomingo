@@ -37,7 +37,7 @@ public class User {
         panel.add(Box.createVerticalStrut(10));
 
         // Option buttons
-        String[] options = {"Games", "Course", "Achievements", "Exit"};
+        String[] options = {"Course", "Achievements", "Exit"};
         int choice = JOptionPane.showOptionDialog(null, panel, "Welcome Menu",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
@@ -50,8 +50,9 @@ public class User {
                 displayAchievements(userDetails);
                 break;
             case 2:
-            	frame.dispose();
-                AppMain.MainScreen(options);
+                frame.dispose();  // Close the frame
+                AppMain.MainScreen(new String[0]);  // Call the main screen method from AppMain
+                break;
             default:
                 JOptionPane.showMessageDialog(null, "Invalid option. Please try again.");
         }
