@@ -14,7 +14,7 @@ public class CourseDatabase {
     }
 
     private static void loadCourses() {
-        try (Reader reader = new FileReader("C:/Users/Ransss/Documents/GitHub/Finals/Finals/src/Game/courses.json")) {
+        try (Reader reader = new FileReader("C:/Users/Earl Jon Palma/OneDrive/Documents/GitHub/BYTEMe/Game/courses.json")) {
             Gson gson = new Gson();
             CourseDetails[] courseArray = gson.fromJson(reader, CourseDetails[].class);
             courses = Arrays.asList(courseArray);

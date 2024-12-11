@@ -1,6 +1,9 @@
 package Game;
 
 import javax.swing.*;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -21,6 +24,30 @@ public class WordGuessing extends GameBase {
             JOptionPane.showMessageDialog(null, "No data available for the selected language.");
             return 0;
         }
+        
+        JFrame frame = new JFrame("WORD GUESSING GAME");
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setLocationRelativeTo(null); // Center the frame on the screen
+        
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Do you want to exit the game?",
+                        "Exit Game",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE
+                );
+                if (result == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    System.exit(0); // Terminate the program
+                }
+            }
+        });
+        
+        frame.setVisible(true);
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
@@ -35,6 +62,21 @@ public class WordGuessing extends GameBase {
 
             String[] wordPair = words.pop();
             String userAnswer = getUserInput("Guess the word: " + wordPair[0]);
+            
+            if (userAnswer == null) {
+                int result = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Do you want to exit the game?",
+                        "Exit Game",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE
+                );
+                if (result == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    System.exit(0); // Terminate the program
+                }
+                continue;
+            }
 
             attempts++;
             if (userAnswer != null && userAnswer.equalsIgnoreCase(wordPair[1])) {

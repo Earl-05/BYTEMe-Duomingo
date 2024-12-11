@@ -26,7 +26,11 @@ public class Course {
                         "Course Management",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
                         null, options, options[0]);
-
+                
+                if (choice==JOptionPane.CLOSED_OPTION) {
+                	System.exit(0);
+                }
+                
                 switch (choice) {
                     case 0:
                         Game.startGame(userDetails);

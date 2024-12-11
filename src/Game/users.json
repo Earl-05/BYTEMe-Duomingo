@@ -17,6 +17,20 @@
     "WGPlayed": 1
   },
   {
+    "userID": "",
+    "userName": "",
+    "password": "",
+    "email": "",
+    "birthday": "",
+    "currentCourse": "Filipino",
+    "achievements": [],
+    "mainLanguage": "English",
+    "gamesPlayed": 0,
+    "WAPlayed": 0,
+    "RPlayed": 0,
+    "WGPlayed": 0
+  },
+  {
     "userID": "3M4N5O",
     "userName": "alex99",
     "password": "alexworld",
@@ -34,8 +48,8 @@
   },
   {
     "userID": "EARL05",
-    "userName": "powwtato",
-    "password": "palms123",
+    "userName": "powwtatoo",
+    "password": "palms05",
     "email": "earlgwaps@gmail.com",
     "birthday": "2005-05-02",
     "currentCourse": "Japanese",

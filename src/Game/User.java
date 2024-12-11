@@ -54,7 +54,8 @@ public class User {
                 AppMain.MainScreen(new String[0]);  // Call the main screen method from AppMain
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Invalid option. Please try again.");
+                System.exit(0);
+                break;
         }
     }
 

@@ -16,6 +16,10 @@ public class AppMain {
             String[] options = {"Log In", "Sign Up", "Display All Users", "Delete User", "Exit"};
             int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO, For Testing: User ID: 000, Password: 000", "Main Menu",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            
+            if (choice == JOptionPane.CLOSED_OPTION) {
+            	System.exit(0);
+            }
 
             switch (choice) {
                 case 0:
@@ -41,8 +45,14 @@ public class AppMain {
 
     private static void logIn() {
         String userID = JOptionPane.showInputDialog("Enter User ID:");
+        if (userID== null) {
+        	return;
+        }
         String password = JOptionPane.showInputDialog("Enter Password:");
-
+        if (password==null) {
+        	return;
+        }
+		
         if (UserDatabase.validateUser(userID, password)) {
             UserDetails userDetails = UserDatabase.getUser(userID);
             if (userDetails != null) {
@@ -55,17 +65,43 @@ public class AppMain {
 
     private static void signUp() {
         String userID = JOptionPane.showInputDialog("Enter User ID:");
+        if (userID==null) {
+        	return;
+        }
+        
         String userName = JOptionPane.showInputDialog("Enter User Name:");
+        if (userName==null) {
+        	return;
+        }
+        
         String password = JOptionPane.showInputDialog("Enter Password:");
+        if(password==null) {
+        	return;
+        }
+        
         String email = JOptionPane.showInputDialog("Enter Email:");
+        if(email==null) {
+        	return;
+        }
+        
         String birthday = JOptionPane.showInputDialog("Enter Birthday (YYYY-MM-DD):");
+        if(birthday==null) {
+        	return;
+        }
+        
         String[] courses = {"Filipino", "English", "Spanish", "Japanese", "French", "Hiligaynon"};
         String selectedCourse = (String) JOptionPane.showInputDialog(null, "Select Course", "Course Selection",
                 JOptionPane.QUESTION_MESSAGE, null, courses, courses[0]);
+        if(selectedCourse==null) {
+        	return;
+        }
 
         String[] languages = {"English", "Filipino", "Spanish", "Japanese", "French", "Hiligaynon"};
         String mainLanguage = (String) JOptionPane.showInputDialog(null, "Select Your Main Language", "Main Language Selection",
                 JOptionPane.QUESTION_MESSAGE, null, languages, languages[0]);
+        if(mainLanguage==null) {
+        	return;
+        }
 
         // Initialize achievements as an empty list for a new user
         List<String> achievements = new ArrayList<>();
@@ -113,7 +149,6 @@ public class AppMain {
             }
         }
     }
-    
 
     private static void deleteUser() {
         String userID = JOptionPane.showInputDialog("Enter User ID to delete:");

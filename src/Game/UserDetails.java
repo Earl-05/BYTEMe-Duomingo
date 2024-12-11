@@ -15,13 +15,14 @@ public class UserDetails {
     private int WAPlayed;
     private int RPlayed;
     private int WGPlayed;
-   
+
+    // No-argument constructor required by Gson
     public UserDetails() {
     }
 
-    public UserDetails(String userID, String userName, String password, String email, String birthday,
-            String currentCourse, List<String> achievements, String mainLanguage, int gamesPlayed, int wAPlayed,
-            int rPlayed, int wGPlayed) {
+    // Constructor and getters/setters
+
+    public UserDetails(String userID, String userName, String password, String email, String birthday, String currentCourse, List<String> achievements, String mainLanguage, int gamesPlayed, int WAPlayed, int RPlayed, int WGPlayed) {
         this.userID = userID;
         this.userName = userName;
         this.password = password;
@@ -31,12 +32,13 @@ public class UserDetails {
         this.achievements = achievements;
         this.mainLanguage = mainLanguage;
         this.gamesPlayed = gamesPlayed;
-        this.WAPlayed = wAPlayed;
-        this.RPlayed = rPlayed;
-        this.WGPlayed = wGPlayed;
+        this.WAPlayed = WAPlayed;
+        this.RPlayed = RPlayed;
+        this.WGPlayed = WGPlayed;
     }
 
-	// Getters and Setters
+    // Getters and setters omitted for brevity
+
     public String getUserID() {
         return userID;
     }

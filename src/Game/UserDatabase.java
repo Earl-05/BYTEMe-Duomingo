@@ -86,7 +86,7 @@ public class UserDatabase {
         UserDetails userDetails = userMap.get(userID);
         return userDetails != null && userDetails.getPassword().equals(password);
     }
-    
+
     public static void updateStats(String userID, String gameType) {
         UserDetails user = userMap.get(userID);
         if (user == null) {
@@ -119,11 +119,8 @@ public class UserDatabase {
         JOptionPane.showMessageDialog(null, "Stats updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
-
     private static String getDatabaseFilePath() {
         String userDir = System.getProperty("user.dir");
         return userDir + File.separator + "src" + File.separator + "Game" + File.separator + "users.json";
     }
-    
-    
 }
