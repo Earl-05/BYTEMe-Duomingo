@@ -48,7 +48,7 @@ public class WordGuessing extends GameBase {
             }
 
             String[] wordPair = words.removeFirst();
-            String userAnswer = getUserInput(frame, "Guess the word: " + wordPair[0]);
+            String userAnswer = getUserInput(frame, "PALMA, Guess the word: " + wordPair[0]);
 
             if (userAnswer == null) {
                 if (confirmExit(frame)) {
