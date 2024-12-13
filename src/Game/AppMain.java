@@ -13,7 +13,7 @@ public class AppMain {
 
     public static void MainScreen(String[] args) {
         while (true) {
-            String[] options = {"Log In", "Sign Up", "Display All Users", "Delete User", "Exit"};
+            String[] options = {"Log In", "Sign Up", "Display All Users", "Exit"};
             int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO", "Main Menu",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
@@ -32,9 +32,6 @@ public class AppMain {
                     displayAllUsers();
                     break;
                 case 3:
-                    deleteUser();
-                    break;
-                case 4:
                     System.exit(0);
                     break;
                 default:
@@ -158,13 +155,6 @@ public class AppMain {
             } else { // Close
                 break;
             }
-        }
-    }
-
-    private static void deleteUser() {
-        String userID = JOptionPane.showInputDialog("Enter User ID to delete:");
-        if (userID != null && !userID.trim().isEmpty()) {
-            UserDatabase.deleteUser(userID);
         }
     }
 }

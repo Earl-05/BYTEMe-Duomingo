@@ -37,7 +37,7 @@ public class User {
         panel.add(Box.createVerticalStrut(10));
 
         // Option buttons
-        String[] options = {"Course", "Achievements", "Exit"};
+        String[] options = {"Course", "Edit Info", "Achievements", "Log Out"};
         int choice = JOptionPane.showOptionDialog(null, panel, "Welcome Menu",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
@@ -46,16 +46,73 @@ public class User {
             case 0:
                 Course.displayCourse(userDetails);
                 break;
-            case 1:
-                displayAchievements(userDetails);
+            case 1:  
+                editUserInfo(userDetails);
+                welcomeUser(userDetails);
                 break;
             case 2:
-                frame.dispose();  // Close the frame
-                AppMain.MainScreen(new String[0]);  // Call the main screen method from AppMain
+                displayAchievements(userDetails);
+                break;
+            case 3:
+                frame.dispose(); 
+                AppMain.MainScreen(new String[0]);
                 break;
             default:
                 System.exit(0);
                 break;
+        }
+    }
+
+    private static void editUserInfo(UserDetails userDetails) {
+        JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));
+
+        JLabel nameLabel = new JLabel("User Name:");
+        JTextField nameField = new JTextField(userDetails.getUserName());
+
+        JLabel emailLabel = new JLabel("Email:");
+        JTextField emailField = new JTextField(userDetails.getEmail());
+
+        JLabel birthdayLabel = new JLabel("Birthday (YYYY-MM-DD):");
+        JTextField birthdayField = new JTextField(userDetails.getBirthday());
+        
+        JButton deleteButton = new JButton("Delete Account");
+        deleteButton.setBackground(new Color(153,0,0));
+        deleteButton.setForeground(Color.WHITE);
+
+        deleteButton.addActionListener(e -> deleteUser(userDetails));
+
+        panel.add(nameLabel);
+        panel.add(nameField);
+        panel.add(emailLabel);
+        panel.add(emailField);
+        panel.add(birthdayLabel);
+        panel.add(birthdayField);
+        panel.add(new JLabel()); // Placeholder to align the delete button
+        panel.add(deleteButton);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Edit User Info", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            userDetails.setUserName(nameField.getText());
+            userDetails.setEmail(emailField.getText());
+            userDetails.setBirthday(birthdayField.getText());
+
+            UserDatabase.updateUser(userDetails);
+            JOptionPane.showMessageDialog(null, "User information updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    private static void deleteUser(UserDetails userDetails) {
+        int confirmation = JOptionPane.showConfirmDialog(null,
+                "Are you sure you want to PERMANENTLY DELETE your account?\nYou will lose all your progress.",
+                "Delete Account",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+
+        if (confirmation == JOptionPane.YES_OPTION) {
+            UserDatabase.deleteUser(userDetails.getUserID());
+            JOptionPane.showMessageDialog(null, "Your account has been deleted.", "Account Deleted", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0); // Exit the application after account deletion
         }
     }
 
