@@ -43,7 +43,7 @@ public class AppMain {
     private static void logIn() {
         JPanel panel = new JPanel(new GridLayout(2, 2, 10, 10));
 
-        JLabel userLabel = new JLabel("User ID:");
+        JLabel userLabel = new JLabel("Username:");
         JTextField userField = new JTextField();
 
         JLabel passLabel = new JLabel("Password:");
@@ -57,11 +57,11 @@ public class AppMain {
         int result = JOptionPane.showConfirmDialog(null, panel, "Log In", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (result == JOptionPane.OK_OPTION) {
-            String userID = userField.getText();
+            String userName = userField.getText();
             String password = new String(passField.getPassword());
 
-            if (UserDatabase.validateUser(userID, password)) {
-                UserDetails userDetails = UserDatabase.getUser(userID);
+            if (UserDatabase.validateUser(userName, password)) {
+                UserDetails userDetails = UserDatabase.getUserByUsername(userName);
                 if (userDetails != null) {
                     User.welcomeUser(userDetails);
                 }
@@ -70,6 +70,7 @@ public class AppMain {
             }
         }
     }
+
 
     private static void signUp() {
         JPanel panel = new JPanel(new GridLayout(5, 2, 10, 10));
@@ -87,7 +88,7 @@ public class AppMain {
         JTextField birthdayField = new JTextField();
 
         JLabel courseLabel = new JLabel("Select Course:");
-        String[] courses = {"Filipino", "English", "Spanish", "Japanese", "French", "Hiligaynon"};
+        String[] courses = {"Filipino", "Spanish", "Japanese", "French", "Hiligaynon"};
         JComboBox<String> courseBox = new JComboBox<>(courses);
 
         panel.add(nameLabel);
@@ -110,7 +111,7 @@ public class AppMain {
             String email = emailField.getText();
             String birthday = birthdayField.getText();
             String selectedCourse = (String) courseBox.getSelectedItem();
-            String mainLanguage = "English"; // Default main language is English
+            String mainLanguage = "English";
 
             List<String> achievements = new ArrayList<>();
 

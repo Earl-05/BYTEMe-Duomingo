@@ -12,12 +12,7 @@ public class Course {
                 // Adjust the difficulty level based on the user's main language
                 String adjustedDifficulty = adjustDifficulty(currentCourse.getDifficulty(), currentCourse.getLanguages(), userDetails.getMainLanguage());
 
-                String[] options = {
-                    "Start Course",
-                    "Resume Course",
-                    "Change Course",
-                    "Exit"
-                };
+                String[] options = {"Start Course", "Change Course", "Exit"};
 
                 int choice = JOptionPane.showOptionDialog(null,
                         "Selected Course: " + currentCourse.getCourseName() + "\n" +
@@ -36,12 +31,9 @@ public class Course {
                         Game.startGame(userDetails);
                         break;
                     case 1:
-                        Game.startGame(userDetails);
-                        break;
-                    case 2:
                         changeCourse(userDetails);
                         break;
-                    case 3:
+                    case 2:
                         User.welcomeUser(userDetails);
                         break;
                     default:

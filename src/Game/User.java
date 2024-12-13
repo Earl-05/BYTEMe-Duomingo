@@ -135,5 +135,7 @@ public class User {
                 JOptionPane.showMessageDialog(null, achievementsList.toString(), "Achievements", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+        
+        welcomeUser(userDetails);
     }
 }

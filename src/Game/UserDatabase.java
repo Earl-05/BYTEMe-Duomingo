@@ -82,10 +82,24 @@ public class UserDatabase {
         return new ArrayList<>(userMap.values());
     }
 
-    public static boolean validateUser(String userID, String password) {
-        UserDetails userDetails = userMap.get(userID);
-        return userDetails != null && userDetails.getPassword().equals(password);
+    public static boolean validateUser(String userName, String password) {
+        for (UserDetails userDetails : userMap.values()) {
+            if (userDetails.getUserName().equals(userName) && userDetails.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
     }
+    
+    public static UserDetails getUserByUsername(String userName) {
+        for (UserDetails userDetails : userMap.values()) {
+            if (userDetails.getUserName().equals(userName)) {
+                return userDetails;
+            }
+        }
+        return null;
+    }
+
 
     public static void updateStats(String userID, String gameType) {
         UserDetails user = userMap.get(userID);

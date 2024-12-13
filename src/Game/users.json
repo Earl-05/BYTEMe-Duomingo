@@ -17,6 +17,20 @@
     "WGPlayed": 1
   },
   {
+    "userID": "724731d7-2cc2-4112-b53d-c7cd518fc23a",
+    "userName": "Jade",
+    "password": "123",
+    "email": "raninj55@gmail.com",
+    "birthday": "2005-05-15",
+    "currentCourse": "Spanish",
+    "achievements": [],
+    "mainLanguage": "English",
+    "gamesPlayed": 0,
+    "WAPlayed": 0,
+    "RPlayed": 0,
+    "WGPlayed": 0
+  },
+  {
     "userID": "111",
     "userName": "EARLY",
     "password": "palma",
