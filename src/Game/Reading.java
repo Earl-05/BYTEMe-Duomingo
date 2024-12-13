@@ -60,7 +60,7 @@ public class Reading extends GameBase {
 
             String[] questionSet = questions.poll(); // Retrieve the next question
             String questionPrompt = "Context Clue: " + questionSet[0] + "\n\n" + questionSet[1];
-            String[] options = {questionSet[2], questionSet[3], questionSet[4]};
+            String[] options = {questionSet[3], questionSet[2], questionSet[4]};
             shuffleArray(options); // Shuffle options to randomize their order
 
             String userAnswer = (String) JOptionPane.showInputDialog(frame, questionPrompt, "Choose the Answer",
@@ -75,7 +75,7 @@ public class Reading extends GameBase {
             }
 
             attempts++;
-            if (userAnswer.equals(questionSet[2])) { // Correct answer
+            if (userAnswer.equals(questionSet[2])) { 
                 JOptionPane.showMessageDialog(frame, "Correct! Well done.");
                 score += 10;
             } else {
