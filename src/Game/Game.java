@@ -16,8 +16,7 @@
 	        int totalScore = 0;
 	
 	        while (keepPlaying) {
-	            int difficulty = chooseDifficulty(currentCourse.getDifficulty());
-	
+	        	
 	            String[] gameOptions = {
 	                "Word Association",
 	                "Word Guessing",
@@ -36,18 +35,39 @@
 	                    null, gameOptions, gameOptions[0]);
 	
 	            switch (gameChoice) {
-	                case 0 -> totalScore += new WordAssociation(difficulty, currentCourse.getCourseName()).playGame();
-	                case 1 -> totalScore += new WordGuessing(difficulty, currentCourse.getCourseName()).playGame();
-	                case 2 -> totalScore += new Reading(difficulty, currentCourse.getCourseName()).playGame();
-	                case 3, -1 -> {
-	                    JOptionPane.showMessageDialog(null, "Thank you for playing! Your total score is: " + totalScore);
-	                    keepPlaying = false;
-	                    User.welcomeUser(userDetails);
+	            case 0 -> {
+	            	int difficulty = chooseDifficulty(currentCourse.getDifficulty());
+	                int result = new WordAssociation(difficulty, currentCourse.getCourseName()).playGame();
+	                if (result == -1) {
+	                    continue;
 	                }
-	                default -> JOptionPane.showMessageDialog(null, "Invalid choice, please try again.");
+	                totalScore += result;
 	            }
+	            case 1 -> {
+	            	int difficulty = chooseDifficulty(currentCourse.getDifficulty());
+	                int result = new WordGuessing(difficulty, currentCourse.getCourseName()).playGame();
+	                if (result == -1) {
+	                    continue;
+	                }
+	                totalScore += result;
+	            }
+	            case 2 -> {
+	            	int difficulty = chooseDifficulty(currentCourse.getDifficulty());
+	                int result = new Reading(difficulty, currentCourse.getCourseName()).playGame();
+	                if (result == -1) {
+	                    continue;
+	                }
+	                totalScore += result;
+	            }
+	            case 3, -1 -> {
+	                JOptionPane.showMessageDialog(null, "Thank you for playing! Your total score is: " + totalScore);
+	                keepPlaying = false;
+	                User.welcomeUser(userDetails);
+	            }
+	            default -> JOptionPane.showMessageDialog(null, "Invalid choice, please try again.");
 	        }
 	    }
+	}
 	
 	    private static CourseDetails getCurrentCourseDetails(String courseName) {
 	        CourseDetails[] courses = CourseDatabase.getCourses();
@@ -67,6 +87,6 @@
 	                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 	                null, difficultyOptions, difficultyOptions[0]);
 	
-	        return difficultyChoice == -1 ? 0 : difficultyChoice; // Default to Beginner if none selected
+	        return difficultyChoice == -1 ? 0 : difficultyChoice; 
 	    }
 	}

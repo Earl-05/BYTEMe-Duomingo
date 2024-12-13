@@ -17,12 +17,12 @@
     "WGPlayed": 1
   },
   {
-    "userID": "",
-    "userName": "",
-    "password": "",
-    "email": "",
-    "birthday": "",
-    "currentCourse": "Filipino",
+    "userID": "111",
+    "userName": "EARLY",
+    "password": "palma",
+    "email": "earlypalma",
+    "birthday": "2004-06-11",
+    "currentCourse": "Spanish",
     "achievements": [],
     "mainLanguage": "English",
     "gamesPlayed": 0,

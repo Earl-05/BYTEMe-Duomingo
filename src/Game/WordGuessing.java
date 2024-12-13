@@ -1,7 +1,6 @@
 package Game;
 
 import javax.swing.*;
-
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Collections;
@@ -12,10 +11,8 @@ public class WordGuessing extends GameBase {
 
     public WordGuessing(int difficulty, String language) {
         super(difficulty, language);
-        Stack<String[]> wordList = GameDatabase.loadWordGuessingData(language, difficulty);
-        Collections.shuffle(wordList); // Shuffle questions
-        this.words = new Stack<>();
-        this.words.addAll(wordList);
+        this.words = GameDatabase.loadWordGuessingData(language, difficulty);
+        Collections.shuffle(words);
     }
 
     @Override
@@ -24,71 +21,71 @@ public class WordGuessing extends GameBase {
             JOptionPane.showMessageDialog(null, "No data available for the selected language.");
             return 0;
         }
-        
-        JFrame frame = new JFrame("WORD GUESSING GAME");
+
+        JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        frame.setSize(400, 300);
-        frame.setLocationRelativeTo(null); // Center the frame on the screen
-        
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(
-                        frame,
-                        "Do you want to exit the game?",
-                        "Exit Game",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE
-                );
-                if (result == JOptionPane.YES_OPTION) {
+                if (confirmExit(frame)) {
                     frame.dispose();
-                    System.exit(0); // Terminate the program
+                    System.exit(0);
                 }
             }
         });
-        
-        frame.setVisible(true);
+
+        JOptionPane.showMessageDialog(frame, "In this game, you will be given a clue. Your task is to guess the word.\nYou will have a limited time for each question.\nPress 'Cancel' to exit the game and return to the main menu.");
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
-        int maxTime = difficulty == 0 ? 120 : 75; // Beginner: 120 sec, Intermediate: 75 sec
+        int maxTime = difficulty == 0 ? 120 : 75;
         int maxQuestions = Math.min(10 + (difficulty * 5), words.size());
 
         for (int i = 0; i < maxQuestions; i++) {
             if ((System.currentTimeMillis() - startTime) / 1000 > maxTime) {
-                JOptionPane.showMessageDialog(null, "Time's up!");
+                JOptionPane.showMessageDialog(frame, "Time's up!");
                 break;
             }
 
-            String[] wordPair = words.pop();
-            String userAnswer = getUserInput("Guess the word: " + wordPair[0]);
-            
+            String[] wordPair = words.removeFirst();
+            String userAnswer = getUserInput(frame, "Guess the word: " + wordPair[0]);
+
             if (userAnswer == null) {
-                int result = JOptionPane.showConfirmDialog(
-                        frame,
-                        "Do you want to exit the game?",
-                        "Exit Game",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE
-                );
-                if (result == JOptionPane.YES_OPTION) {
+                if (confirmExit(frame)) {
                     frame.dispose();
-                    System.exit(0); // Terminate the program
+                    return 0;
                 }
                 continue;
             }
 
             attempts++;
-            if (userAnswer != null && userAnswer.equalsIgnoreCase(wordPair[1])) {
-                JOptionPane.showMessageDialog(null, "Correct!");
+            if (userAnswer.equalsIgnoreCase(wordPair[1])) {
+                JOptionPane.showMessageDialog(frame, "Correct!");
                 score += 10;
             } else {
-                JOptionPane.showMessageDialog(null, "Wrong! Correct: " + wordPair[1]);
+                JOptionPane.showMessageDialog(frame, "Wrong! Correct: " + wordPair[1]);
             }
         }
 
-        // Update user stats
+        frame.dispose();
+
         UserDatabase.updateStats(getUserID(), "WGPlayed");
         return calculateScore(attempts, (System.currentTimeMillis() - startTime) / 1000, maxQuestions);
+    }
+
+    private String getUserInput(JFrame frame, String prompt) {
+        return JOptionPane.showInputDialog(frame, prompt);
+    }
+
+    
+    private boolean confirmExit(JFrame frame) {
+        int result = JOptionPane.showConfirmDialog(
+                frame,
+                "Do you want to exit the game?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+        return result == JOptionPane.YES_OPTION;
     }
 }

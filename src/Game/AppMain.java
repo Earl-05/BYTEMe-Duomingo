@@ -1,3 +1,4 @@
+
 package Game;
 
 import java.util.ArrayList;
@@ -103,10 +104,8 @@ public class AppMain {
         	return;
         }
 
-        // Initialize achievements as an empty list for a new user
         List<String> achievements = new ArrayList<>();
 
-        // Create a new User with all fields
         UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, achievements, mainLanguage, 0, 0, 0, 0);
         UserDatabase.addUser(newUser);
     }

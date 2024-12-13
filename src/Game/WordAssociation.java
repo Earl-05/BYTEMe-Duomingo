@@ -12,7 +12,7 @@ public class WordAssociation extends GameBase {
     public WordAssociation(int difficulty, String language) {
         super(difficulty, language);
         this.wordPairs = GameDatabase.loadWordAssociationData(language, difficulty);
-        Collections.shuffle(wordPairs); // Shuffle questions
+        Collections.shuffle(wordPairs);
     }
 
     @Override
@@ -22,33 +22,22 @@ public class WordAssociation extends GameBase {
             return 0;
         }
 
-        JFrame frame = new JFrame("WORD ASSOCIATION GAME");
+        JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        frame.setSize(400, 300);
-        frame.setLocationRelativeTo(null); // Center the frame on the screen
-        
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(
-                        frame,
-                        "Do you want to exit the game?",
-                        "Exit Game",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE
-                );
-                if (result == JOptionPane.YES_OPTION) {
-                    frame.dispose();
-                    System.exit(0); // Terminate the program
+                if (confirmExit(frame)) {
+                	frame.dispose();
                 }
             }
         });
 
-        frame.setVisible(true);
+        JOptionPane.showMessageDialog(frame, "In this game, you will be given a word. Your task is to translate it correctly.\nYou will have a limited time for each question.\nPress 'Cancel' to exit the game and return to the main menu.");
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
-        int maxTime = difficulty == 0 ? 60 : 45; // Beginner: 60 sec, Intermediate: 45 sec
+        int maxTime = difficulty == 0 ? 60 : 45;
         int maxQuestions = Math.min(10 + (difficulty * 5), wordPairs.size());
 
         for (int i = 0; i < maxQuestions; i++) {
@@ -61,16 +50,9 @@ public class WordAssociation extends GameBase {
             String userAnswer = getUserInput(frame, "Translate: " + pair[0]);
 
             if (userAnswer == null) {
-                int result = JOptionPane.showConfirmDialog(
-                        frame,
-                        "Do you want to exit the game?",
-                        "Exit Game",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE
-                );
-                if (result == JOptionPane.YES_OPTION) {
-                    frame.dispose();
-                    System.exit(0); // Terminate the program
+                if (confirmExit(frame)) {
+                	frame.dispose();
+                	return -1;
                 }
                 continue;
             }
@@ -84,14 +66,19 @@ public class WordAssociation extends GameBase {
             }
         }
 
-        frame.dispose(); // Close the game window
+        frame.dispose();
 
-        // Update user stats
         UserDatabase.updateStats(getUserID(), "WAPlayed");
         return calculateScore(attempts, (System.currentTimeMillis() - startTime) / 1000, maxQuestions);
     }
 
     private String getUserInput(JFrame frame, String prompt) {
         return JOptionPane.showInputDialog(frame, prompt);
+    }
+    
+    private boolean confirmExit (JFrame frame) {
+    	int result = JOptionPane.showConfirmDialog(frame,"Do you want to exit the game?", "Exit Game",
+    			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    	return result == JOptionPane.YES_OPTION;
     }
 }
