@@ -1,10 +1,9 @@
-
 package Game;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
 
 public class AppMain {
 
@@ -15,10 +14,11 @@ public class AppMain {
     public static void MainScreen(String[] args) {
         while (true) {
             String[] options = {"Log In", "Sign Up", "Display All Users", "Delete User", "Exit"};
-            int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO, KUNG MAKITA NIYU NI GA WORK ANG PUSH", "Main Menu",
+            int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO", "Main Menu",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-            
+
             if (choice == JOptionPane.CLOSED_OPTION) {
+                break;
             }
 
             switch (choice) {
@@ -44,71 +44,84 @@ public class AppMain {
     }
 
     private static void logIn() {
-        String userID = JOptionPane.showInputDialog("Enter User ID:");
-        if (userID== null) {
-        	return;
-        }
-        String password = JOptionPane.showInputDialog("Enter Password:");
-        if (password==null) {
-        	return;
-        }
-		
-        if (UserDatabase.validateUser(userID, password)) {
-            UserDetails userDetails = UserDatabase.getUser(userID);
-            if (userDetails != null) {
-                User.welcomeUser(userDetails);
+        JPanel panel = new JPanel(new GridLayout(2, 2, 10, 10));
+
+        JLabel userLabel = new JLabel("User ID:");
+        JTextField userField = new JTextField();
+
+        JLabel passLabel = new JLabel("Password:");
+        JPasswordField passField = new JPasswordField();
+
+        panel.add(userLabel);
+        panel.add(userField);
+        panel.add(passLabel);
+        panel.add(passField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Log In", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            String userID = userField.getText();
+            String password = new String(passField.getPassword());
+
+            if (UserDatabase.validateUser(userID, password)) {
+                UserDetails userDetails = UserDatabase.getUser(userID);
+                if (userDetails != null) {
+                    User.welcomeUser(userDetails);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid credentials. Please try again.");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid credentials. Please try again.");
         }
     }
 
     private static void signUp() {
-        String userID = JOptionPane.showInputDialog("Enter User ID:");
-        if (userID==null) {
-        	return;
-        }
-        
-        String userName = JOptionPane.showInputDialog("Enter User Name:");
-        if (userName==null) {
-        	return;
-        }
-        
-        String password = JOptionPane.showInputDialog("Enter Password:");
-        if(password==null) {
-        	return;
-        }
-        
-        String email = JOptionPane.showInputDialog("Enter Email:");
-        if(email==null) {
-        	return;
-        }
-        
-        String birthday = JOptionPane.showInputDialog("Enter Birthday (YYYY-MM-DD):");
-        if(birthday==null) {
-        	return;
-        }
-        
+        JPanel panel = new JPanel(new GridLayout(5, 2, 10, 10));
+
+        JLabel nameLabel = new JLabel("User Name:");
+        JTextField nameField = new JTextField();
+
+        JLabel passLabel = new JLabel("Password:");
+        JPasswordField passField = new JPasswordField();
+
+        JLabel emailLabel = new JLabel("Email:");
+        JTextField emailField = new JTextField();
+
+        JLabel birthdayLabel = new JLabel("Birthday (YYYY-MM-DD):");
+        JTextField birthdayField = new JTextField();
+
+        JLabel courseLabel = new JLabel("Select Course:");
         String[] courses = {"Filipino", "English", "Spanish", "Japanese", "French", "Hiligaynon"};
-        String selectedCourse = (String) JOptionPane.showInputDialog(null, "Select Course", "Course Selection",
-                JOptionPane.QUESTION_MESSAGE, null, courses, courses[0]);
-        if(selectedCourse==null) {
-        	return;
+        JComboBox<String> courseBox = new JComboBox<>(courses);
+
+        panel.add(nameLabel);
+        panel.add(nameField);
+        panel.add(passLabel);
+        panel.add(passField);
+        panel.add(emailLabel);
+        panel.add(emailField);
+        panel.add(birthdayLabel);
+        panel.add(birthdayField);
+        panel.add(courseLabel);
+        panel.add(courseBox);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Sign Up", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            String userID = UUID.randomUUID().toString();
+            String userName = nameField.getText();
+            String password = new String(passField.getPassword());
+            String email = emailField.getText();
+            String birthday = birthdayField.getText();
+            String selectedCourse = (String) courseBox.getSelectedItem();
+            String mainLanguage = "English"; // Default main language is English
+
+            List<String> achievements = new ArrayList<>();
+
+            UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, achievements, mainLanguage, 0, 0, 0, 0);
+            UserDatabase.addUser(newUser);
         }
-
-        String[] languages = {"English", "Filipino", "Spanish", "Japanese", "French", "Hiligaynon"};
-        String mainLanguage = (String) JOptionPane.showInputDialog(null, "Select Your Main Language", "Main Language Selection",
-                JOptionPane.QUESTION_MESSAGE, null, languages, languages[0]);
-        if(mainLanguage==null) {
-        	return;
-        }
-
-        List<String> achievements = new ArrayList<>();
-
-        UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, achievements, mainLanguage, 0, 0, 0, 0);
-        UserDatabase.addUser(newUser);
     }
-    
+
     private static void displayAllUsers() {
         List<UserDetails> userDetails = UserDatabase.getAllUsers();
         if (userDetails.isEmpty()) {
@@ -150,6 +163,8 @@ public class AppMain {
 
     private static void deleteUser() {
         String userID = JOptionPane.showInputDialog("Enter User ID to delete:");
-        UserDatabase.deleteUser(userID);
+        if (userID != null && !userID.trim().isEmpty()) {
+            UserDatabase.deleteUser(userID);
+        }
     }
 }

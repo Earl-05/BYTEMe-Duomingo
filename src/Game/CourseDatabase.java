@@ -1,12 +1,12 @@
 package Game;
 
-
 import java.io.*;
 import java.util.*;
-import com.google.gson.Gson;
+import com.google.gson.*;
 
 public class CourseDatabase {
 
+    private static final String COURSES_FILE = getFilePath("courses.json");
     private static List<CourseDetails> courses;
 
     static {
@@ -14,7 +14,14 @@ public class CourseDatabase {
     }
 
     private static void loadCourses() {
-        try (Reader reader = new FileReader("C:/Users/Earl Jon Palma/OneDrive/Documents/GitHub/BYTEMe/Game/courses.json")) {
+        File file = new File(COURSES_FILE);
+        if (!file.exists()) {
+            System.err.println("Courses file not found: " + COURSES_FILE);
+            courses = new ArrayList<>(); // Initialize an empty list if file is not found
+            return;
+        }
+
+        try (Reader reader = new FileReader(file)) {
             Gson gson = new Gson();
             CourseDetails[] courseArray = gson.fromJson(reader, CourseDetails[].class);
             courses = Arrays.asList(courseArray);
@@ -25,5 +32,10 @@ public class CourseDatabase {
 
     public static CourseDetails[] getCourses() {
         return courses.toArray(new CourseDetails[0]);
+    }
+
+    private static String getFilePath(String fileName) {
+        String userDir = System.getProperty("user.dir");
+        return userDir + File.separator + "src" + File.separator + "Game" + File.separator + fileName;
     }
 }
