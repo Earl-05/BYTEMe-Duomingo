@@ -9,12 +9,14 @@ import java.util.Queue;
 
 public class Reading extends GameBase {
     private Queue<String[]> sentences;
+    private int maxTries;
 
     public Reading(int difficulty, String language) {
         super(difficulty, language);
         LinkedList<String[]> sentenceList = GameDatabase.loadReadingData(language, difficulty);
         Collections.shuffle(sentenceList); 
         this.sentences = new LinkedList<>(sentenceList);
+        this.maxTries = difficulty == 0? 5 : 3;
     }
 
     @Override
@@ -35,7 +37,7 @@ public class Reading extends GameBase {
             }
         });
 
-        JOptionPane.showMessageDialog(null, "In this game, you will be given a sentence. Your task is to translate it correctly.\nYou will have a limited time for each question.\nPress 'Cancel' to exit the game and return to the main menu.");
+        JOptionPane.showMessageDialog(frame, "In this game, you will be given a sentence. Your task is to translate it correctly.\nYou will have 5 tries (Beginner) and 3 tries (Intermediate) and a time limit of 90 seconds (Beginner) and 60 seconds (Intermediate).\nPress 'Cancel' to exit the game and return to the main menu.","INSTRUCTION", JOptionPane.INFORMATION_MESSAGE);
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
@@ -43,8 +45,8 @@ public class Reading extends GameBase {
         int maxQuestions = Math.min(10 + (difficulty * 5), sentences.size());
 
         for (int i = 0; i < maxQuestions; i++) {
-            if ((System.currentTimeMillis() - startTime) / 1000 > maxTime) {
-                JOptionPane.showMessageDialog(null, "Time's up!");
+            if ((System.currentTimeMillis() - startTime) / 1000 > maxTime || maxTries <= 0) {
+                JOptionPane.showMessageDialog(frame, "Game over! You've used all your tries or time is up!", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
                 break;
             }
 
@@ -65,6 +67,7 @@ public class Reading extends GameBase {
                 score += 10;
             } else {
                 JOptionPane.showMessageDialog(null, "Wrong! Correct: " + sentencePair[1]);
+                maxTries--;
             }
         }
 

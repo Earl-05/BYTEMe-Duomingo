@@ -8,11 +8,13 @@ import java.util.LinkedList;
 
 public class WordAssociation extends GameBase {
     private LinkedList<String[]> wordPairs;
+	private int maxTries;
 
     public WordAssociation(int difficulty, String language) {
         super(difficulty, language);
         this.wordPairs = GameDatabase.loadWordAssociationData(language, difficulty);
         Collections.shuffle(wordPairs);
+        this.maxTries = difficulty == 0? 5 : 3;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class WordAssociation extends GameBase {
             }
         });
 
-        JOptionPane.showMessageDialog(frame, "In this game, you will be given a word. Your task is to translate it correctly.\nYou will have a limited time for each question.\nPress 'Cancel' to exit the game and return to the main menu.");
+        JOptionPane.showMessageDialog(frame, "In this game, you will be given a word. Your task is to translate it correctly.\nYou will have 5 tries (Beginner) and 3 tries (Intermediate) and a time limit of 60 seconds (Beginner) and 45 seconds (Intermediate).\nPress 'Cancel' to exit the game and return to the main menu.", "INSTRUCTION",JOptionPane.INFORMATION_MESSAGE);
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
@@ -41,8 +43,8 @@ public class WordAssociation extends GameBase {
         int maxQuestions = Math.min(10 + (difficulty * 5), wordPairs.size());
 
         for (int i = 0; i < maxQuestions; i++) {
-            if ((System.currentTimeMillis() - startTime) / 1000 > maxTime) {
-                JOptionPane.showMessageDialog(frame, "Time's up!");
+            if ((System.currentTimeMillis() - startTime) / 1000 > maxTime || maxTries <= 0) {
+                JOptionPane.showMessageDialog(frame, "Game over! You've used all your tries or time is up!", "GAME OVER",JOptionPane.INFORMATION_MESSAGE);
                 break;
             }
 
@@ -63,6 +65,7 @@ public class WordAssociation extends GameBase {
                 score += 10;
             } else {
                 JOptionPane.showMessageDialog(frame, "Wrong! Correct: " + pair[1]);
+                maxTries--;
             }
         }
 
