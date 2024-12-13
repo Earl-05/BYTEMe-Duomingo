@@ -9,7 +9,7 @@ public class Course {
         if (currentCourse != null) {
             boolean continueCourse = true;
             while (continueCourse) {
-                // Adjust the difficulty level based on the user's main language
+
                 String adjustedDifficulty = adjustDifficulty(currentCourse.getDifficulty(), currentCourse.getLanguages(), userDetails.getMainLanguage());
 
                 String[] options = {"Start Course", "Change Course", "Exit"};
@@ -82,10 +82,9 @@ public class Course {
     private static String adjustDifficulty(String defaultDifficulty, String[] courseLanguages, String userMainLanguage) {
         for (String language : courseLanguages) {
             if (language.equalsIgnoreCase(userMainLanguage)) {
-                return defaultDifficulty; // No change if the user's language matches
+                return defaultDifficulty; 
             }
         }
-        // Increase difficulty for non-matching languages
         switch (defaultDifficulty.toLowerCase()) {
             case "easy":
                 return "Intermediate";

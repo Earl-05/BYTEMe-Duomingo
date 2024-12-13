@@ -14,7 +14,7 @@ public class AppMain {
     public static void MainScreen(String[] args) {
         while (true) {
             String[] options = {"Log In", "Sign Up", "Display All Users", "Exit"};
-            int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO", "Main Menu",
+            int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO!", "Main Menu",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
             if (choice == JOptionPane.CLOSED_OPTION) {
