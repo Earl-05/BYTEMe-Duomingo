@@ -1,233 +1,731 @@
 {
-    "Spanish": {
-      "Beginner": [
-        ["La manzana es roja.", "The apple is red."],
-        ["El perro es leal.", "The dog is loyal."],
-        ["La casa es grande.", "The house is big."],
-        ["El cielo es azul.", "The sky is blue."],
-        ["La mesa es de madera.", "The table is made of wood."],
-        ["Tengo hambre.", "I am hungry."],
-        ["Mi nombre es Juan.", "My name is Juan."],
-        ["La puerta está abierta.", "The door is open."],
-        ["Me gusta el helado.", "I like ice cream."],
-        ["El coche es rápido.", "The car is fast."],
-        ["La luna está brillante.", "The moon is bright."],
-        ["El árbol es alto.", "The tree is tall."],
-        ["Voy al cine.", "I am going to the cinema."],
-        ["El niño juega con el balón.", "The boy plays with the ball."],
-        ["Tengo una mascota.", "I have a pet."],
-        ["El sol es cálido.", "The sun is warm."],
-        ["La ciudad es ruidosa.", "The city is noisy."],
-        ["El gato duerme.", "The cat sleeps."],
-        ["El agua está fría.", "The water is cold."],
-        ["Me gusta leer.", "I like to read."]
-      ],
-      "Intermediate": [
-        ["Ella lee el libro.", "She reads the book."],
-        ["El niño juega en el parque.", "The boy plays in the park."],
-        ["Estamos aprendiendo español.", "We are learning Spanish."],
-        ["Mi hermana toca el piano.", "My sister plays the piano."],
-        ["El avión vuela alto.", "The airplane flies high."],
-        ["Él tiene una bicicleta roja.", "He has a red bicycle."],
-        ["La tienda está cerrada.", "The store is closed."],
-        ["Vamos a la playa.", "We are going to the beach."],
-        ["El perro corre rápido.", "The dog runs fast."],
-        ["Hoy hace buen tiempo.", "Today is good weather."],
-        ["El libro es interesante.", "The book is interesting."],
-        ["Ellos van al cine mañana.", "They are going to the cinema tomorrow."],
-        ["El río está tranquilo.", "The river is calm."],
-        ["Los estudiantes estudian para el examen.", "The students study for the exam."],
-        ["Mis amigos vienen a mi casa.", "My friends are coming to my house."],
-        ["Nosotros viajamos a España.", "We are traveling to Spain."],
-        ["Me gustan los deportes.", "I like sports."],
-        ["Ella compra comida.", "She buys food."],
-        ["El profesor enseña matemáticas.", "The teacher teaches math."],
-        ["Este restaurante es muy bueno.", "This restaurant is very good."]
-      ]
-    },
-    "Filipino": {
-      "Beginner": [
-        ["Ang mansanas ay pula.", "The apple is red."],
-        ["Ang aso ay tapat.", "The dog is loyal."],
-        ["Ang bahay ay malaki.", "The house is big."],
-        ["Ang langit ay asul.", "The sky is blue."],
-        ["Ang mesa ay gawa sa kahoy.", "The table is made of wood."],
-        ["Ako ay gutom.", "I am hungry."],
-        ["Ang pangalan ko ay Juan.", "My name is Juan."],
-        ["Ang pinto ay bukas.", "The door is open."],
-        ["Gusto ko ang sorbetes.", "I like ice cream."],
-        ["Ang kotse ay mabilis.", "The car is fast."],
-        ["Ang buwan ay maliwanag.", "The moon is bright."],
-        ["Ang puno ay mataas.", "The tree is tall."],
-        ["Pupunta ako sa sinehan.", "I am going to the cinema."],
-        ["Ang bata ay naglalaro ng bola.", "The boy plays with the ball."],
-        ["May alaga akong hayop.", "I have a pet."],
-        ["Ang araw ay mainit.", "The sun is warm."],
-        ["Ang lungsod ay maingay.", "The city is noisy."],
-        ["Ang pusa ay natutulog.", "The cat sleeps."],
-        ["Ang tubig ay malamig.", "The water is cold."],
-        ["Gusto ko magbasa.", "I like to read."]
-      ],
-      "Intermediate": [
-        ["Siya ay nagbabasa ng libro.", "She reads the book."],
-        ["Ang bata ay naglalaro sa parke.", "The boy plays in the park."],
-        ["Kami ay natututo ng Filipino.", "We are learning Filipino."],
-        ["Ang kapatid kong babae ay tumutugtog ng piano.", "My sister plays the piano."],
-        ["Ang eroplano ay lumilipad ng mataas.", "The airplane flies high."],
-        ["Mayroon siyang pulang bisikleta.", "He has a red bicycle."],
-        ["Ang tindahan ay sarado.", "The store is closed."],
-        ["Pupunta kami sa beach.", "We are going to the beach."],
-        ["Ang aso ay tumatakbo ng mabilis.", "The dog runs fast."],
-        ["Maganda ang panahon ngayon.", "The weather is nice today."],
-        ["Ang libro ay kawili-wili.", "The book is interesting."],
-        ["Pupunta sila sa sinehan bukas.", "They are going to the cinema tomorrow."],
-        ["Ang ilog ay tahimik.", "The river is calm."],
-        ["Ang mga estudyante ay nag-aaral para sa exam.", "The students study for the exam."],
-        ["Pumunta ang mga kaibigan ko sa bahay ko.", "My friends are coming to my house."],
-        ["Naglakbay kami papuntang España.", "We are traveling to Spain."],
-        ["Gusto ko ang mga sports.", "I like sports."],
-        ["Siya ay bumibili ng pagkain.", "She buys food."],
-        ["Ang guro ay nagtuturo ng matematika.", "The teacher teaches math."],
-        ["Ang restaurant na ito ay masarap.", "This restaurant is very good."]
-      ]
-    },
-    "Japanese": {
-      "Beginner": [
-        ["Ringo wa akai desu.", "The apple is red."],
-        ["Inu wa chuushin desu.", "The dog is loyal."],
-        ["Ie wa ooki desu.", "The house is big."],
-        ["Sora wa aoi desu.", "The sky is blue."],
-        ["Tēburu wa madera de dekiteimasu.", "The table is made of wood."],
-        ["Onaka ga suita.", "I am hungry."],
-        ["Watashi no namae wa Juan desu.", "My name is Juan."],
-        ["Doa wa akemashita.", "The door is open."],
-        ["Aisu kurīmu ga suki desu.", "I like ice cream."],
-        ["Kuruma wa hayai desu.", "The car is fast."],
-        ["Tsuki wa akarui desu.", "The moon is bright."],
-        ["Ki wa takai desu.", "The tree is tall."],
-        ["Eiga ni ikimasu.", "I am going to the cinema."],
-        ["Kodomo wa bōru de asondeimasu.", "The child plays with the ball."],
-        ["Petto ga imasu.", "I have a pet."],
-        ["Taiyō wa atatakai desu.", "The sun is warm."],
-        ["Machi wa urusai desu.", "The city is noisy."],
-        ["Neko wa nemutteimasu.", "The cat sleeps."],
-        ["Mizu wa tsumetai desu.", "The water is cold."],
-        ["Yomu koto ga suki desu.", "I like to read."]
-      ],
-      "Intermediate": [
-        ["Kanojo wa hon o yomimasu.", "She reads the book."],
-        ["Kodomo wa kōen de asondeimasu.", "The boy plays in the park."],
-        ["Watashitachi wa nihongo o benkyou shiteimasu.", "We are learning Japanese."],
-        ["Imōto wa piano o hikimasu.", "My sister plays the piano."],
-        ["Hikōki wa takaku tobu.", "The airplane flies high."],
-        ["Kare wa akai jitensha o motteimasu.", "He has a red bicycle."],
-        ["Mise wa shimatteimasu.", "The store is closed."],
-        ["Bīchi ni ikimasu.", "We are going to the beach."],
-        ["Inu wa hayaku hashirimasu.", "The dog runs fast."],
-        ["Kyou wa ii tenki desu.", "Today is good weather."],
-        ["Hon wa omoshiroi desu.", "The book is interesting."],
-        ["Kare-ra wa ashita eigakan ni ikimasu.", "They are going to the cinema tomorrow."],
-        ["Kawa wa shizuka desu.", "The river is calm."],
-        ["Gakusei wa shiken no tame ni benkyou shiteimasu.", "The students study for the exam."],
-        ["Watashi no tomodachi wa watashi no ie ni kimasu.", "My friends are coming to my house."],
-        ["Watashitachi wa Supein ni ryokou shimasu.", "We are traveling to Spain."],
-        ["Watashi wa supōtsu ga suki desu.", "I like sports."],
-        ["Kanojo wa tabemono o kaimasu.", "She buys food."],
-        ["Sensei wa suugaku o oshiemasu.", "The teacher teaches math."],
-        ["Kono resutoran wa totemo oishii desu.", "This restaurant is very good."]
-      ]
-    },
-    "Hiligaynon": {
-      "Beginner": [
-        ["Ang mansanas pula.", "The apple is red."],
-        ["Ang ido tapat.", "The dog is loyal."],
-        ["Ang balay daku.", "The house is big."],
-        ["Ang langit asul.", "The sky is blue."],
-        ["Ang lamesa kahoy.", "The table is made of wood."],
-        ["Gutom ako.", "I am hungry."],
-        ["Ang ngalan ko Juan.", "My name is Juan."],
-        ["Bukas ang pwertahan.", "The door is open."],
-        ["Gusto ko ice cream.", "I like ice cream."],
-        ["Ang salakyan dasig.", "The car is fast."],
-        ["Ang bulan nagadulog.", "The moon is bright."],
-        ["Ang kahoy taas.", "The tree is tall."],
-        ["Magadto ako sinehan.", "I am going to the cinema."],
-        ["Ang bata nagalumba bola.", "The boy plays with the ball."],
-        ["May alaga ako hayop.", "I have a pet."],
-        ["Ang adlaw mainit.", "The sun is warm."],
-        ["Ang siyudad mabaskog.", "The city is noisy."],
-        ["Ang pusa nagatulog.", "The cat sleeps."],
-        ["Ang tubig malamig.", "The water is cold."],
-        ["Gusto ko magbasa.", "I like to read."]
-      ],
-      "Intermediate": [
-        ["Siya nagabasa libro.", "She reads the book."],
-        ["Ang bata nagalumba sa parke.", "The boy plays in the park."],
-        ["Kami nagatutok Filipino.", "We are learning Filipino."],
-        ["Ang kapatid ko babae nagatugtog piano.", "My sister plays the piano."],
-        ["Ang eroplano nagalupad mataas.", "The airplane flies high."],
-        ["May bisikleta pula siya.", "He has a red bicycle."],
-        ["Ang tindahan sarado.", "The store is closed."],
-        ["Pupunta kami beach.", "We are going to the beach."],
-        ["Ang ido nagadalagan dasig.", "The dog runs fast."],
-        ["Maayo ang panahon subong.", "Today is good weather."],
-        ["Ang libro makalipay.", "The book is interesting."],
-        ["Magadto sila sinehan buwas.", "They are going to the cinema tomorrow."],
-        ["Ang suba hilum.", "The river is calm."],
-        ["Ang mga estudyante nagatuon exam.", "The students study for the exam."],
-        ["Ang mga amigo ko magapanaw sa balay.", "My friends are coming to my house."],
-        ["Kami magapadulong Spain.", "We are traveling to Spain."],
-        ["Gusto ko sports.", "I like sports."],
-        ["Siya nagapalit pagkaon.", "She buys food."],
-        ["Ang maestro nagtudlo matematika.", "The teacher teaches math."],
-        ["Ang restaurant maayo.", "This restaurant is very good."]
-      ]
-    },
-        "French": {
-          "Beginner": [
-            ["La pomme est rouge.", "The apple is red."],
-            ["Le chien est loyal.", "The dog is loyal."],
-            ["La maison est grande.", "The house is big."],
-            ["Le ciel est bleu.", "The sky is blue."],
-            ["La table est en bois.", "The table is made of wood."],
-            ["J'ai faim.", "I am hungry."],
-            ["Mon nom est Juan.", "My name is Juan."],
-            ["La porte est ouverte.", "The door is open."],
-            ["J'aime la glace.", "I like ice cream."],
-            ["La voiture est rapide.", "The car is fast."],
-            ["La lune est brillante.", "The moon is bright."],
-            ["L'arbre est grand.", "The tree is tall."],
-            ["Je vais au cinéma.", "I am going to the cinema."],
-            ["L'enfant joue avec le ballon.", "The child plays with the ball."],
-            ["J'ai un animal de compagnie.", "I have a pet."],
-            ["Le soleil est chaud.", "The sun is warm."],
-            ["La ville est bruyante.", "The city is noisy."],
-            ["Le chat dort.", "The cat sleeps."],
-            ["L'eau est froide.", "The water is cold."],
-            ["J'aime lire.", "I like to read."]
-          ],
-          "Intermediate": [
-            ["Elle lit le livre.", "She reads the book."],
-            ["L'enfant joue au parc.", "The child plays in the park."],
-            ["Nous apprenons le français.", "We are learning French."],
-            ["Ma sœur joue du piano.", "My sister plays the piano."],
-            ["L'avion vole haut.", "The airplane flies high."],
-            ["Il a un vélo rouge.", "He has a red bicycle."],
-            ["Le magasin est fermé.", "The store is closed."],
-            ["Nous allons à la plage.", "We are going to the beach."],
-            ["Le chien court vite.", "The dog runs fast."],
-            ["Aujourd'hui il fait beau.", "Today is nice weather."],
-            ["Le livre est intéressant.", "The book is interesting."],
-            ["Ils vont au cinéma demain.", "They are going to the cinema tomorrow."],
-            ["Le fleuve est calme.", "The river is calm."],
-            ["Les étudiants étudient pour l'examen.", "The students study for the exam."],
-            ["Mes amis viennent chez moi.", "My friends are coming to my house."],
-            ["Nous voyageons en Espagne.", "We are traveling to Spain."],
-            ["J'aime les sports.", "I like sports."],
-            ["Elle achète de la nourriture.", "She buys food."],
-            ["Le professeur enseigne les mathématiques.", "The teacher teaches math."],
-            ["Ce restaurant est très bon.", "This restaurant is very good."]
-          ]
-        }
+  "Spanish": {
+    "Beginner": [
+      {
+        "sentence": "El perro corre rápidamente por el parque.",
+        "question": "What does 'rápidamente' most likely mean?",
+        "correctAnswer": "Quickly",
+        "option1": "Slowly",
+        "option2": "Lazily"
+      },
+      {
+        "sentence": "Juan comió toda la pizza en una hora.",
+        "question": "What does 'comió' most likely mean?",
+        "correctAnswer": "Ate",
+        "option1": "Cooked",
+        "option2": "Bought"
+      },
+      {
+        "sentence": "La casa está muy limpia y ordenada.",
+        "question": "What does 'limpia' most likely mean?",
+        "correctAnswer": "Clean",
+        "option1": "Dirty",
+        "option2": "Big"
+      },
+      {
+        "sentence": "María cantó una canción hermosa en el escenario.",
+        "question": "What does 'cantó' most likely mean?",
+        "correctAnswer": "Sang",
+        "option1": "Listened",
+        "option2": "Danced"
+      },
+      {
+        "sentence": "El coche rojo es el más rápido.",
+        "question": "What does 'rápido' most likely mean?",
+        "correctAnswer": "Fast",
+        "option1": "Slow",
+        "option2": "Heavy"
+      },
+      {
+        "sentence": "La luna brilla en el cielo nocturno.",
+        "question": "What does 'brilla' most likely mean?",
+        "correctAnswer": "Shines",
+        "option1": "Grows",
+        "option2": "Falls"
+      },
+      {
+        "sentence": "Mi hermana juega al fútbol todos los domingos.",
+        "question": "What does 'juega' most likely mean?",
+        "correctAnswer": "Plays",
+        "option1": "Works",
+        "option2": "Sleeps"
+      },
+      {
+        "sentence": "Ellos van a la escuela en bicicleta.",
+        "question": "What does 'bicicleta' most likely mean?",
+        "correctAnswer": "Bicycle",
+        "option1": "Car",
+        "option2": "Train"
+      },
+      {
+        "sentence": "El agua está muy fría hoy.",
+        "question": "What does 'fría' most likely mean?",
+        "correctAnswer": "Cold",
+        "option1": "Hot",
+        "option2": "Sweet"
+      },
+      {
+        "sentence": "Él escribe cartas todos los días.",
+        "question": "What does 'escribe' most likely mean?",
+        "correctAnswer": "Writes",
+        "option1": "Reads",
+        "option2": "Draws"
       }
-  
+    ],
+    "Intermediate": [
+      {
+        "sentence": "La tormenta dejó el paisaje desolado y vacío.",
+        "question": "What does 'desolado' most likely mean?",
+        "correctAnswer": "Desolate",
+        "option1": "Crowded",
+        "option2": "Beautiful"
+      },
+      {
+        "sentence": "El director explicó la situación con gran claridad.",
+        "question": "What does 'claridad' most likely mean?",
+        "correctAnswer": "Clarity",
+        "option1": "Noise",
+        "option2": "Darkness"
+      },
+      {
+        "sentence": "A pesar de la confusión, ella mantuvo la calma.",
+        "question": "What does 'confusión' most likely mean?",
+        "correctAnswer": "Confusion",
+        "option1": "Peace",
+        "option2": "Excitement"
+      },
+      {
+        "sentence": "El río fluye rápidamente después de la lluvia.",
+        "question": "What does 'fluye' most likely mean?",
+        "correctAnswer": "Flows",
+        "option1": "Stops",
+        "option2": "Rises"
+      },
+      {
+        "sentence": "El sol se oculta detrás de las montañas.",
+        "question": "What does 'oculta' most likely mean?",
+        "correctAnswer": "Hides",
+        "option1": "Shines",
+        "option2": "Falls"
+      },
+      {
+        "sentence": "La fiesta estuvo llena de gente y música alegre.",
+        "question": "What does 'alegre' most likely mean?",
+        "correctAnswer": "Happy",
+        "option1": "Sad",
+        "option2": "Angry"
+      },
+      {
+        "sentence": "El libro estaba cubierto de polvo en la estantería.",
+        "question": "What does 'polvo' most likely mean?",
+        "correctAnswer": "Dust",
+        "option1": "Water",
+        "option2": "Wood"
+      },
+      {
+        "sentence": "El gato dormía plácidamente bajo el sol.",
+        "question": "What does 'plácidamente' most likely mean?",
+        "correctAnswer": "Peacefully",
+        "option1": "Restlessly",
+        "option2": "Loudly"
+      },
+      {
+        "sentence": "Los niños corren hacia la playa con entusiasmo.",
+        "question": "What does 'entusiasmo' most likely mean?",
+        "correctAnswer": "Enthusiasm",
+        "option1": "Boredom",
+        "option2": "Anger"
+      },
+      {
+        "sentence": "La montaña es impresionante y majestuosamente alta.",
+        "question": "What does 'majestuosamente' most likely mean?",
+        "correctAnswer": "Majestically",
+        "option1": "Small",
+        "option2": "Dangerous"
+      }
+    ]
+  },
+  "Filipino": {
+    "Beginner": [
+      {
+        "sentence": "Ang araw ay maliwanag at mainit.",
+        "question": "What does 'maliwanag' most likely mean?",
+        "correctAnswer": "Bright",
+        "option1": "Dark",
+        "option2": "Cold"
+      },
+      {
+        "sentence": "Si Maria ay nagluluto ng masarap na pagkain.",
+        "question": "What does 'nagluluto' most likely mean?",
+        "correctAnswer": "Cooking",
+        "option1": "Eating",
+        "option2": "Cleaning"
+      },
+      {
+        "sentence": "Si Juan ay tumulong sa kanyang kaibigan.",
+        "question": "What does 'tumulong' most likely mean?",
+        "correctAnswer": "Helped",
+        "option1": "Ignored",
+        "option2": "Fought"
+      },
+      {
+        "sentence": "Ang bahay ay malinis at maayos.",
+        "question": "What does 'maayos' most likely mean?",
+        "correctAnswer": "Tidy",
+        "option1": "Messy",
+        "option2": "Old"
+      },
+      {
+        "sentence": "Ang bata ay naglalaro sa parke.",
+        "question": "What does 'naglalaro' most likely mean?",
+        "correctAnswer": "Playing",
+        "option1": "Eating",
+        "option2": "Running"
+      },
+      {
+        "sentence": "Si Carla ay nag-aaral ng mabuti.",
+        "question": "What does 'nag-aaral' most likely mean?",
+        "correctAnswer": "Studying",
+        "option1": "Sleeping",
+        "option2": "Working"
+      },
+      {
+        "sentence": "Ang aso ay tumakbo sa kalsada.",
+        "question": "What does 'tumakbo' most likely mean?",
+        "correctAnswer": "Ran",
+        "option1": "Walked",
+        "option2": "Jumped"
+      },
+      {
+        "sentence": "Ang mga puno ay tumutubo sa kagubatan.",
+        "question": "What does 'tumutubo' most likely mean?",
+        "correctAnswer": "Grows",
+        "option1": "Falls",
+        "option2": "Shakes"
+      },
+      {
+        "sentence": "Siya ay naglakad papunta sa tindahan.",
+        "question": "What does 'naglakad' most likely mean?",
+        "correctAnswer": "Walked",
+        "option1": "Ran",
+        "option2": "Hopped"
+      },
+      {
+        "sentence": "Siya ay masaya sa kanyang bagong damit.",
+        "question": "What does 'masaya' most likely mean?",
+        "correctAnswer": "Happy",
+        "option1": "Sad",
+        "option2": "Angry"
+      }
+    ],
+    "Intermediate": [
+      {
+        "sentence": "Ang kalsada ay puno ng mga kotse at trak.",
+        "question": "What does 'puno' most likely mean?",
+        "correctAnswer": "Full",
+        "option1": "Empty",
+        "option2": "Clean"
+      },
+      {
+        "sentence": "Ang bundok ay matarik at mahirap akyatin.",
+        "question": "What does 'matarik' most likely mean?",
+        "correctAnswer": "Steep",
+        "option1": "Flat",
+        "option2": "Wide"
+      },
+      {
+        "sentence": "Siya ay nagtatrabaho nang buong sigasig.",
+        "question": "What does 'sigasig' most likely mean?",
+        "correctAnswer": "Enthusiasm",
+        "option1": "Boredom",
+        "option2": "Fear"
+      },
+      {
+        "sentence": "Ang kanilang bahay ay nasa tuktok ng burol.",
+        "question": "What does 'tuktok' most likely mean?",
+        "correctAnswer": "Top",
+        "option1": "Bottom",
+        "option2": "Middle"
+      },
+      {
+        "sentence": "Ang kanyang mga mata ay kumikislap sa saya.",
+        "question": "What does 'kumikislap' most likely mean?",
+        "correctAnswer": "Sparkling",
+        "option1": "Dull",
+        "option2": "Shining"
+      },
+      {
+        "sentence": "Ang hangin ay malamig at presko sa umaga.",
+        "question": "What does 'presko' most likely mean?",
+        "correctAnswer": "Fresh",
+        "option1": "Stale",
+        "option2": "Warm"
+      },
+      {
+        "sentence": "Ang mga hayop sa zoo ay tila abala.",
+        "question": "What does 'abala' most likely mean?",
+        "correctAnswer": "Busy",
+        "option1": "Bored",
+        "option2": "Relaxed"
+      },
+      {
+        "sentence": "Ang ilog ay dumadaloy nang mabilis pagkatapos ng ulan.",
+        "question": "What does 'dumadaloy' most likely mean?",
+        "correctAnswer": "Flows",
+        "option1": "Stops",
+        "option2": "Rises"
+      },
+      {
+        "sentence": "Ang kanyang buhok ay mahaba at makintab.",
+        "question": "What does 'makintab' most likely mean?",
+        "correctAnswer": "Shiny",
+        "option1": "Dull",
+        "option2": "Rough"
+      },
+      {
+        "sentence": "Ang lawa ay tahimik at maganda sa umaga.",
+        "question": "What does 'tahimik' most likely mean?",
+        "correctAnswer": "Quiet",
+        "option1": "Loud",
+        "option2": "Shallow"
+      }
+    ],
+	  "Japanese": {
+	    "Beginner": [
+	      {
+	        "sentence": "Kare wa kouen de aruku.",
+	        "question": "What does 'aruku' most likely mean?",
+	        "correctAnswer": "Walk",
+	        "option1": "Run",
+	        "option2": "Jump"
+	      },
+	      {
+	        "sentence": "Ame ga futteimasu.",
+	        "question": "What does 'futteimasu' most likely mean?",
+	        "correctAnswer": "Is raining",
+	        "option1": "Is snowing",
+	        "option2": "Is windy"
+	      },
+	      {
+	        "sentence": "Watashi wa hon wo yondeimasu.",
+	        "question": "What does 'yondeimasu' most likely mean?",
+	        "correctAnswer": "Reading",
+	        "option1": "Eating",
+	        "option2": "Writing"
+	      },
+	      {
+	        "sentence": "Watashi wa gohan wo tabemasu.",
+	        "question": "What does 'tabemasu' most likely mean?",
+	        "correctAnswer": "Eat",
+	        "option1": "Sleep",
+	        "option2": "Speak"
+	      },
+	      {
+	        "sentence": "Kanojo wa koocha wo nomu.",
+	        "question": "What does 'nomu' most likely mean?",
+	        "correctAnswer": "Drink",
+	        "option1": "Walk",
+	        "option2": "Sleep"
+	      },
+	      {
+	        "sentence": "Watashi wa neko wo aishiteimasu.",
+	        "question": "What does 'aishiteimasu' most likely mean?",
+	        "correctAnswer": "Love",
+	        "option1": "Hate",
+	        "option2": "Like"
+	      },
+	      {
+	        "sentence": "Kare wa eiga wo mimashita.",
+	        "question": "What does 'mimashita' most likely mean?",
+	        "correctAnswer": "Watched",
+	        "option1": "Heard",
+	        "option2": "Listened"
+	      },
+	      {
+	        "sentence": "Kanojo wa uta wo utatteimasu.",
+	        "question": "What does 'utatteimasu' most likely mean?",
+	        "correctAnswer": "Singing",
+	        "option1": "Dancing",
+	        "option2": "Laughing"
+	      },
+	      {
+	        "sentence": "Watashi wa tomodachi to asondeimasu.",
+	        "question": "What does 'asondeimasu' most likely mean?",
+	        "correctAnswer": "Playing",
+	        "option1": "Studying",
+	        "option2": "Eating"
+	      },
+	      {
+	        "sentence": "Watashi wa sakura wo mimashita.",
+	        "question": "What does 'mimashita' most likely mean?",
+	        "correctAnswer": "Saw",
+	        "option1": "Heard",
+	        "option2": "Touched"
+	      }
+	    ],
+	    "Intermediate": [
+	      {
+	        "sentence": "Kawa wa yama o nagareteimasu.",
+	        "question": "What does 'nagareteimasu' most likely mean?",
+	        "correctAnswer": "Flowing",
+	        "option1": "Falling",
+	        "option2": "Rising"
+	      },
+	      {
+	        "sentence": "Kare wa subarashii kimochi de aruki tsuzukemashita.",
+	        "question": "What does 'subarashii' most likely mean?",
+	        "correctAnswer": "Wonderful",
+	        "option1": "Sad",
+	        "option2": "Angry"
+	      },
+	      {
+	        "sentence": "Kanojo wa keikaku o koushin shimashita.",
+	        "question": "What does 'koushin' most likely mean?",
+	        "correctAnswer": "Update",
+	        "option1": "Cancel",
+	        "option2": "Forget"
+	      },
+	      {
+	        "sentence": "Sora wa kirei ni akaku natteimasu.",
+	        "question": "What does 'akaku' most likely mean?",
+	        "correctAnswer": "Red",
+	        "option1": "Blue",
+	        "option2": "Green"
+	      },
+	      {
+	        "sentence": "Watashi wa ryouri ga suki desu.",
+	        "question": "What does 'suki' most likely mean?",
+	        "correctAnswer": "Like",
+	        "option1": "Hate",
+	        "option2": "Avoid"
+	      },
+	      {
+	        "sentence": "Furui hon wa totemo omoshiroi desu.",
+	        "question": "What does 'omoshiroi' most likely mean?",
+	        "correctAnswer": "Interesting",
+	        "option1": "Boring",
+	        "option2": "Confusing"
+	      },
+	      {
+	        "sentence": "Kanojo wa takai yume o motteimasu.",
+	        "question": "What does 'yume' most likely mean?",
+	        "correctAnswer": "Dream",
+	        "option1": "Goal",
+	        "option2": "Memory"
+	      },
+	      {
+	        "sentence": "Sokoshirenu yoru ni wa mozu ga utaimasu.",
+	        "question": "What does 'mozu' most likely mean?",
+	        "correctAnswer": "Mosquito",
+	        "option1": "Bird",
+	        "option2": "Cat"
+	      },
+	      {
+	        "sentence": "Kare wa takusan no hon wo yomimashita.",
+	        "question": "What does 'takusan' most likely mean?",
+	        "correctAnswer": "Many",
+	        "option1": "Few",
+	        "option2": "Some"
+	      },
+	      {
+	        "sentence": "Kanojo wa subete no shitsumon ni kotaemashita.",
+	        "question": "What does 'shitsumon' most likely mean?",
+	        "correctAnswer": "Question",
+	        "option1": "Answer",
+	        "option2": "Story"
+	      }
+	    ]
+	  },
+	  "French": {
+	    "Beginner": [
+	      {
+	        "sentence": "Le soleil brille dans le ciel.",
+	        "question": "What does 'brille' most likely mean?",
+	        "correctAnswer": "Shines",
+	        "option1": "Hides",
+	        "option2": "Rises"
+	      },
+	      {
+	        "sentence": "Elle mange une pomme rouge.",
+	        "question": "What does 'mange' most likely mean?",
+	        "correctAnswer": "Eats",
+	        "option1": "Sleeps",
+	        "option2": "Runs"
+	      },
+	      {
+	        "sentence": "Il fait froid aujourd'hui.",
+	        "question": "What does 'froid' most likely mean?",
+	        "correctAnswer": "Cold",
+	        "option1": "Hot",
+	        "option2": "Warm"
+	      },
+	      {
+	        "sentence": "Nous avons visité le musée.",
+	        "question": "What does 'visité' most likely mean?",
+	        "correctAnswer": "Visited",
+	        "option1": "Left",
+	        "option2": "Cleaned"
+	      },
+	      {
+	        "sentence": "Les oiseaux chantent dans les arbres.",
+	        "question": "What does 'chantent' most likely mean?",
+	        "correctAnswer": "Sing",
+	        "option1": "Fly",
+	        "option2": "Sleep"
+	      },
+	      {
+	        "sentence": "Le chat dort sur le canapé.",
+	        "question": "What does 'dort' most likely mean?",
+	        "correctAnswer": "Sleeps",
+	        "option1": "Plays",
+	        "option2": "Runs"
+	      },
+	      {
+	        "sentence": "Il regarde un film au cinéma.",
+	        "question": "What does 'regarde' most likely mean?",
+	        "correctAnswer": "Watches",
+	        "option1": "Eats",
+	        "option2": "Plays"
+	      },
+	      {
+	        "sentence": "Nous aimons aller à la plage.",
+	        "question": "What does 'aimons' most likely mean?",
+	        "correctAnswer": "Like",
+	        "option1": "Hate",
+	        "option2": "Avoid"
+	      },
+	      {
+	        "sentence": "Elle lit un livre intéressant.",
+	        "question": "What does 'lit' most likely mean?",
+	        "correctAnswer": "Reads",
+	        "option1": "Writes",
+	        "option2": "Sings"
+	      },
+	      {
+	        "sentence": "Les enfants jouent dehors.",
+	        "question": "What does 'jouent' most likely mean?",
+	        "correctAnswer": "Play",
+	        "option1": "Study",
+	        "option2": "Sleep"
+	      }
+	    ],
+	    "Intermediate": [
+	      {
+	        "sentence": "Le vent souffle fort aujourd'hui.",
+	        "question": "What does 'souffle' most likely mean?",
+	        "correctAnswer": "Blows",
+	        "option1": "Stops",
+	        "option2": "Shines"
+	      },
+	      {
+	        "sentence": "Il a réparé la voiture hier.",
+	        "question": "What does 'réparé' most likely mean?",
+	        "correctAnswer": "Repaired",
+	        "option1": "Bought",
+	        "option2": "Destroyed"
+	      },
+	      {
+	        "sentence": "Elle a pris une décision importante.",
+	        "question": "What does 'décision' most likely mean?",
+	        "correctAnswer": "Decision",
+	        "option1": "Mistake",
+	        "option2": "Question"
+	      },
+	      {
+	        "sentence": "Les fleurs dans le jardin sont magnifiques.",
+	        "question": "What does 'magnifiques' most likely mean?",
+	        "correctAnswer": "Magnificent",
+	        "option1": "Boring",
+	        "option2": "Small"
+	      },
+	      {
+	        "sentence": "Les élèves écoutent attentivement.",
+	        "question": "What does 'attentivement' most likely mean?",
+	        "correctAnswer": "Attentively",
+	        "option1": "Loudly",
+	        "option2": "Quickly"
+	      },
+	      {
+	        "sentence": "Le film était très émouvant.",
+	        "question": "What does 'émouvant' most likely mean?",
+	        "correctAnswer": "Touching",
+	        "option1": "Boring",
+	        "option2": "Funny"
+	      },
+	      {
+	        "sentence": "Il est toujours à l'heure au travail.",
+	        "question": "What does 'à l'heure' most likely mean?",
+	        "correctAnswer": "On time",
+	        "option1": "Late",
+	        "option2": "Early"
+	      },
+	      {
+	        "sentence": "Les montagnes sont couvertes de neige.",
+	        "question": "What does 'neige' most likely mean?",
+	        "correctAnswer": "Snow",
+	        "option1": "Rain",
+	        "option2": "Cloud"
+	      },
+	      {
+	        "sentence": "Elle a fait un excellent discours.",
+	        "question": "What does 'discours' most likely mean?",
+	        "correctAnswer": "Speech",
+	        "option1": "Music",
+	        "option2": "Dance"
+	      },
+	      {
+	        "sentence": "Il a préparé un dîner spécial pour son anniversaire.",
+	        "question": "What does 'préparé' most likely mean?",
+	        "correctAnswer": "Prepared",
+	        "option1": "Bought",
+	        "option2": "Destroyed"
+	      }
+	    ]
+	  },
+	  "Hiligaynon": {
+	    "Beginner": [
+	      {
+	        "sentence": "Ang adlaw nagapanikad sa langit.",
+	        "question": "What does 'panikad' most likely mean?",
+	        "correctAnswer": "Shines",
+	        "option1": "Falls",
+	        "option2": "Rises"
+	      },
+	      {
+	        "sentence": "Si Juan nagkaon sang panyaga.",
+	        "question": "What does 'nagkaon' most likely mean?",
+	        "correctAnswer": "Ate",
+	        "option1": "Cooked",
+	        "option2": "Bought"
+	      },
+	      {
+	        "sentence": "Si Maria nagahimo sang maayo nga trabaho.",
+	        "question": "What does 'nagahimo' most likely mean?",
+	        "correctAnswer": "Does",
+	        "option1": "Stops",
+	        "option2": "Breaks"
+	      },
+	      {
+	        "sentence": "Ang bata nagadula sa plaza.",
+	        "question": "What does 'nagadula' most likely mean?",
+	        "correctAnswer": "Playing",
+	        "option1": "Singing",
+	        "option2": "Walking"
+	      },
+	      {
+	        "sentence": "Siya nagahimo sang iyang assignment.",
+	        "question": "What does 'nagahimo' most likely mean?",
+	        "correctAnswer": "Makes",
+	        "option1": "Breaks",
+	        "option2": "Fixes"
+	      },
+	      {
+	        "sentence": "Ang baboy nagapanikad sa uma.",
+	        "question": "What does 'panikad' most likely mean?",
+	        "correctAnswer": "Runs",
+	        "option1": "Jumps",
+	        "option2": "Flies"
+	      },
+	      {
+	        "sentence": "Ang tanan nagahalin sa balay.",
+	        "question": "What does 'nagahalin' most likely mean?",
+	        "correctAnswer": "Leaving",
+	        "option1": "Entering",
+	        "option2": "Staying"
+	      },
+	      {
+	        "sentence": "Siya nagahilabot sa mga libro.",
+	        "question": "What does 'nagahilabot' most likely mean?",
+	        "correctAnswer": "Touched",
+	        "option1": "Read",
+	        "option2": "Threw"
+	      },
+	      {
+	        "sentence": "Ang pagkaon mabangon.",
+	        "question": "What does 'mabangon' most likely mean?",
+	        "correctAnswer": "Smells good",
+	        "option1": "Cold",
+	        "option2": "Burned"
+	      },
+	      {
+	        "sentence": "Nagapadayon ang trabaho sa opisina.",
+	        "question": "What does 'nagapadayon' most likely mean?",
+	        "correctAnswer": "Continues",
+	        "option1": "Stops",
+	        "option2": "Starts"
+	      }
+	    ],
+	    "Intermediate": [
+	      {
+	        "sentence": "Ang mga punò nagatubo sa kilid sang suba.",
+	        "question": "What does 'nagatubo' most likely mean?",
+	        "correctAnswer": "Grows",
+	        "option1": "Falls",
+	        "option2": "Stops"
+	      },
+	      {
+	        "sentence": "Ang langit puno sang mga panganod.",
+	        "question": "What does 'puno' most likely mean?",
+	        "correctAnswer": "Full",
+	        "option1": "Empty",
+	        "option2": "Clear"
+	      },
+	      {
+	        "sentence": "Siya nagapasalamat sa tanan nga nagbulig.",
+	        "question": "What does 'nagapasalamat' most likely mean?",
+	        "correctAnswer": "Thanks",
+	        "option1": "Hates",
+	        "option2": "Ignores"
+	      },
+	      {
+	        "sentence": "Nagahalin ang hangin sa dagat.",
+	        "question": "What does 'nagahalin' most likely mean?",
+	        "correctAnswer": "Blows",
+	        "option1": "Stops",
+	        "option2": "Shines"
+	      },
+	      {
+	        "sentence": "Siya nagapaligo sa ilog.",
+	        "question": "What does 'nagapaligo' most likely mean?",
+	        "correctAnswer": "Bathing",
+	        "option1": "Washing",
+	        "option2": "Cleaning"
+	      },
+	      {
+	        "sentence": "Ang mga bata nagapadayon sa pagtuon.",
+	        "question": "What does 'nagapadayon' most likely mean?",
+	        "correctAnswer": "Continue",
+	        "option1": "Start",
+	        "option2": "Stop"
+	      },
+	      {
+	        "sentence": "Ang buwan nagapanikad sa gab-i.",
+	        "question": "What does 'panikad' most likely mean?",
+	        "correctAnswer": "Shines",
+	        "option1": "Falls",
+	        "option2": "Hides"
+	      },
+	      {
+	        "sentence": "Ang mga hayop nagahalin sa kakahuyan.",
+	        "question": "What does 'nagahalin' most likely mean?",
+	        "correctAnswer": "Leave",
+	        "option1": "Enter",
+	        "option2": "Sleep"
+	      },
+	      {
+	        "sentence": "Ang mga isda nagalanguy sa tubig.",
+	        "question": "What does 'nagalanguy' most likely mean?",
+	        "correctAnswer": "Swims",
+	        "option1": "Floats",
+	        "option2": "Jumps"
+	      },
+	      {
+	        "sentence": "Nagapadayon ang pagsulod sang mga bisita.",
+	        "question": "What does 'nagapadayon' most likely mean?",
+	        "correctAnswer": "Continues",
+	        "option1": "Starts",
+	        "option2": "Ends"
+	      }
+	    ]
+	  }
+	}

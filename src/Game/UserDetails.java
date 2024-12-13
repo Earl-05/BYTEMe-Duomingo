@@ -14,124 +14,151 @@ public class UserDetails {
     private int gamesPlayed;
     private int WAPlayed;
     private int RPlayed;
-    private int WGPlayed;
+    private int SWPlayed;
 
-    // No-argument constructor required by Gson
+
     public UserDetails() {
     }
 
-    // Constructor and getters/setters
 
-    public UserDetails(String userID, String userName, String password, String email, String birthday, String currentCourse, List<String> achievements, String mainLanguage, int gamesPlayed, int WAPlayed, int RPlayed, int WGPlayed) {
-        this.userID = userID;
-        this.userName = userName;
-        this.password = password;
-        this.email = email;
-        this.birthday = birthday;
-        this.currentCourse = currentCourse;
-        this.achievements = achievements;
-        this.mainLanguage = mainLanguage;
-        this.gamesPlayed = gamesPlayed;
-        this.WAPlayed = WAPlayed;
-        this.RPlayed = RPlayed;
-        this.WGPlayed = WGPlayed;
-    }
+	public UserDetails(String userID, String userName, String password, String email, String birthday,
+			String currentCourse, List<String> achievements, String mainLanguage, int gamesPlayed, int wAPlayed,
+			int rPlayed, int sWPlayed) {
+		super();
+		this.userID = userID;
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+		this.birthday = birthday;
+		this.currentCourse = currentCourse;
+		this.achievements = achievements;
+		this.mainLanguage = mainLanguage;
+		this.gamesPlayed = gamesPlayed;
+		WAPlayed = wAPlayed;
+		RPlayed = rPlayed;
+		SWPlayed = sWPlayed;
+	}
 
-    // Getters and setters omitted for brevity
 
-    public String getUserID() {
-        return userID;
-    }
+	public String getUserID() {
+		return userID;
+	}
 
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
 
-    public String getUserName() {
-        return userName;
-    }
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
-    public String getPassword() {
-        return password;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public String getEmail() {
-        return email;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public String getBirthday() {
-        return birthday;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
 
-    public String getCurrentCourse() {
-        return currentCourse;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setCurrentCourse(String currentCourse) {
-        this.currentCourse = currentCourse;
-    }
 
-    public List<String> getAchievements() {
-        return achievements;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setAchievements(List<String> achievements) {
-        this.achievements = achievements;
-    }
 
-    public String getMainLanguage() {
-        return mainLanguage;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setMainLanguage(String mainLanguage) {
-        this.mainLanguage = mainLanguage;
-    }
 
-    public int getGamesPlayed() {
-        return gamesPlayed;
-    }
+	public String getBirthday() {
+		return birthday;
+	}
 
-    public void setGamesPlayed(int gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
-    }
 
-    public int getWAPlayed() {
-        return WAPlayed;
-    }
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 
-    public void setWAPlayed(int WAPlayed) {
-        this.WAPlayed = WAPlayed;
-    }
 
-    public int getRPlayed() {
-        return RPlayed;
-    }
+	public String getCurrentCourse() {
+		return currentCourse;
+	}
 
-    public void setRPlayed(int RPlayed) {
-        this.RPlayed = RPlayed;
-    }
 
-    public int getWGPlayed() {
-        return WGPlayed;
-    }
+	public void setCurrentCourse(String currentCourse) {
+		this.currentCourse = currentCourse;
+	}
 
-    public void setWGPlayed(int WGPlayed) {
-        this.WGPlayed = WGPlayed;
-    }
+
+	public List<String> getAchievements() {
+		return achievements;
+	}
+
+
+	public void setAchievements(List<String> achievements) {
+		this.achievements = achievements;
+	}
+
+
+	public String getMainLanguage() {
+		return mainLanguage;
+	}
+
+
+	public void setMainLanguage(String mainLanguage) {
+		this.mainLanguage = mainLanguage;
+	}
+
+
+	public int getGamesPlayed() {
+		return gamesPlayed;
+	}
+
+
+	public void setGamesPlayed(int gamesPlayed) {
+		this.gamesPlayed = gamesPlayed;
+	}
+
+
+	public int getWAPlayed() {
+		return WAPlayed;
+	}
+
+
+	public void setWAPlayed(int wAPlayed) {
+		WAPlayed = wAPlayed;
+	}
+
+
+	public int getRPlayed() {
+		return RPlayed;
+	}
+
+
+	public void setRPlayed(int rPlayed) {
+		RPlayed = rPlayed;
+	}
+
+
+	public int getSWPlayed() {
+		return SWPlayed;
+	}
+
+
+	public void setSWPlayed(int sWPlayed) {
+		SWPlayed = sWPlayed;
+	}
+	
+	
+
 }

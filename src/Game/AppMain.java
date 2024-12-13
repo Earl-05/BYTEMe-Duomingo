@@ -131,12 +131,10 @@ public class AppMain {
         while (true) {
             UserDetails currentUser = userDetails.get(currentIndex);
             StringBuilder userDetail = new StringBuilder("===== User Details =====\n")
-                    .append("User ID: ").append(currentUser.getUserID()).append("\n")
                     .append("Name: ").append(currentUser.getUserName()).append("\n")
                     .append("Email: ").append(currentUser.getEmail()).append("\n")
                     .append("Birthday: ").append(currentUser.getBirthday()).append("\n")
-                    .append("Course: ").append(currentUser.getCurrentCourse()).append("\n")
-                    .append("Main Language: ").append(currentUser.getMainLanguage()).append("\n");
+                    .append("Course: ").append(currentUser.getCurrentCourse()).append("\n");
 
             int option = JOptionPane.showOptionDialog(
                     null,

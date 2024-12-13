@@ -1,22 +1,5 @@
 [
   {
-    "userID": "000",
-    "userName": "Joshua David Gula Ranin",
-    "password": "000",
-    "email": "janesmith@example.com",
-    "birthday": "1990-08-25",
-    "currentCourse": "Spanish",
-    "achievements": [
-      "First Steps",
-      null
-    ],
-    "mainLanguage": "English",
-    "gamesPlayed": 2,
-    "WAPlayed": 0,
-    "RPlayed": 1,
-    "WGPlayed": 1
-  },
-  {
     "userID": "724731d7-2cc2-4112-b53d-c7cd518fc23a",
     "userName": "Jade",
     "password": "123",
@@ -28,104 +11,48 @@
     "gamesPlayed": 0,
     "WAPlayed": 0,
     "RPlayed": 0,
-    "WGPlayed": 0
+    "SWPlayed": 0
   },
   {
-    "userID": "111",
-    "userName": "EARLY",
-    "password": "palma",
-    "email": "earlypalma",
-    "birthday": "2004-06-11",
+    "userID": "928d26c4-ecfc-4e13-92bf-35a2b2e6a65d",
+    "userName": "cabuwog",
+    "password": "456",
+    "email": "wesley@gmail.com",
+    "birthday": "2003-00-00",
+    "currentCourse": "French",
+    "achievements": [],
+    "mainLanguage": "English",
+    "gamesPlayed": 0,
+    "WAPlayed": 0,
+    "RPlayed": 0,
+    "SWPlayed": 0
+  },
+  {
+    "userID": "6675a11d-affa-4519-bc1f-2e545a4ef15c",
+    "userName": "Harvs",
+    "password": "789",
+    "email": "harvey@gmail.com",
+    "birthday": "2004-09-21",
     "currentCourse": "Spanish",
     "achievements": [],
     "mainLanguage": "English",
     "gamesPlayed": 0,
     "WAPlayed": 0,
     "RPlayed": 0,
-    "WGPlayed": 0
+    "SWPlayed": 0
   },
   {
-    "userID": "3M4N5O",
-    "userName": "alex99",
-    "password": "alexworld",
-    "email": "alex99@example.com",
-    "birthday": "1988-02-28",
-    "currentCourse": "French",
-    "achievements": [
-      "First Steps"
-    ],
-    "mainLanguage": "English",
-    "gamesPlayed": 5,
-    "WAPlayed": 2,
-    "RPlayed": 1,
-    "WGPlayed": 2
-  },
-  {
-    "userID": "EARL05",
-    "userName": "powwtatoo",
-    "password": "palms05",
-    "email": "earlgwaps@gmail.com",
-    "birthday": "2005-05-02",
+    "userID": "358a5f29-ee02-4d3b-8f22-8701cc0d77a6",
+    "userName": "Palms",
+    "password": "000",
+    "email": "earl@gmail.com",
+    "birthday": "2004-00-00",
     "currentCourse": "Japanese",
     "achievements": [],
-    "mainLanguage": "Filipino",
+    "mainLanguage": "English",
     "gamesPlayed": 0,
     "WAPlayed": 0,
     "RPlayed": 0,
-    "WGPlayed": 0
-  },
-  {
-    "userID": "1A2B3C",
-    "userName": "johndoe23",
-    "password": "pass1234",
-    "email": "johndoe23@example.com",
-    "birthday": "1995-05-15",
-    "currentCourse": "Japanese",
-    "achievements": [
-      "First Steps",
-      "Guess Who?"
-    ],
-    "mainLanguage": "English",
-    "gamesPlayed": 7,
-    "WAPlayed": 3,
-    "RPlayed": 2,
-    "WGPlayed": 2
-  },
-  {
-    "userID": "0J1K2L",
-    "userName": "emilyb",
-    "password": "emilysecure",
-    "email": "emilyb@example.com",
-    "birthday": "2001-04-20",
-    "currentCourse": "Filipino",
-    "achievements": [
-      "First Steps",
-      "Matchmaker",
-      "Bookworm Beginner"
-    ],
-    "mainLanguage": "English",
-    "gamesPlayed": 10,
-    "WAPlayed": 4,
-    "RPlayed": 3,
-    "WGPlayed": 3
-  },
-  {
-    "userID": "7G8H9I",
-    "userName": "mike2023",
-    "password": "mikesecret",
-    "email": "mike2023@example.com",
-    "birthday": "1998-12-12",
-    "currentCourse": "Filipino",
-    "achievements": [
-      "First Steps",
-      "Matchmaker",
-      "Guess Who?",
-      "Bookworm Beginner"
-    ],
-    "mainLanguage": "English",
-    "gamesPlayed": 12,
-    "WAPlayed": 5,
-    "RPlayed": 4,
-    "WGPlayed": 3
+    "SWPlayed": 0
   }
 ]
