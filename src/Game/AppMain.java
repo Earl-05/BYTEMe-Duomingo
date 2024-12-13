@@ -15,11 +15,10 @@ public class AppMain {
     public static void MainScreen(String[] args) {
         while (true) {
             String[] options = {"Log In", "Sign Up", "Display All Users", "Delete User", "Exit"};
-            int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO, For Testing: User ID: 000, Password: 000", "Main Menu",
+            int choice = JOptionPane.showOptionDialog(null, "WELCOME TO DUOMINGO, KUNG MAKITA NIYU NI GA WORK ANG PUSH", "Main Menu",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
             
             if (choice == JOptionPane.CLOSED_OPTION) {
-            	System.exit(0);
             }
 
             switch (choice) {
