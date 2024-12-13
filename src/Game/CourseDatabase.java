@@ -2,13 +2,7 @@ package Game;
 
 import java.io.*;
 import java.util.*;
-
-import com.google.gson.Gson;
-
-
-
-
-
+import com.google.gson.*;
 
 public class CourseDatabase {
 

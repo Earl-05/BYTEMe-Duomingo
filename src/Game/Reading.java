@@ -8,20 +8,20 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Reading extends GameBase {
-    private Queue<String[]> questions; // Queue to hold the questions
+    private Queue<String[]> sentences;
     private int maxTries;
 
     public Reading(int difficulty, String language) {
         super(difficulty, language);
-        LinkedList<String[]> questionList = GameDatabase.loadReadingData(language, difficulty);
-        Collections.shuffle(questionList); // Shuffle the list before adding to the queue
-        this.questions = new LinkedList<>(questionList);
-        this.maxTries = difficulty == 0 ? 5 : 3;
+        LinkedList<String[]> sentenceList = GameDatabase.loadReadingData(language, difficulty);
+        Collections.shuffle(sentenceList); 
+        this.sentences = new LinkedList<>(sentenceList);
+        this.maxTries = difficulty == 0? 5 : 3;
     }
 
     @Override
     public int playGame() {
-        if (questions.isEmpty()) {
+        if (sentences.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No data available for the selected language.");
             return 0;
         }
@@ -31,75 +31,53 @@ public class Reading extends GameBase {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if (confirmExit(frame)) {
-                    frame.dispose();
+                if(confirmExit(frame)) {
+                	frame.dispose();
                 }
             }
         });
 
-        JOptionPane.showMessageDialog(frame, """
-                INSTRUCTIONS:
-                1. You will be presented with a sentence and a question based on context clues.
-                2. Choose the correct answer from the multiple-choice options.
-                3. You have a limited number of tries and a time limit:
-                   - Beginner: 5 tries, 90 seconds.
-                   - Intermediate: 3 tries, 60 seconds.
-                Press 'Cancel' to exit the game.
-                """, "INSTRUCTION", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, "In this game, you will be given a sentence. Your task is to translate it correctly.\nYou will have 5 tries (Beginner) and 3 tries (Intermediate) and a time limit of 90 seconds (Beginner) and 60 seconds (Intermediate).\nPress 'Cancel' to exit the game and return to the main menu.","INSTRUCTION", JOptionPane.INFORMATION_MESSAGE);
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
         int maxTime = difficulty == 0 ? 90 : 60;
+        int maxQuestions = Math.min(10 + (difficulty * 5), sentences.size());
 
-        // Process each question from the queue
-        while (!questions.isEmpty() && maxTries > 0) {
-            if ((System.currentTimeMillis() - startTime) / 1000 > maxTime) {
-                JOptionPane.showMessageDialog(frame, "Time's up! Game over!", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
+        for (int i = 0; i < maxQuestions; i++) {
+            if ((System.currentTimeMillis() - startTime) / 1000 > maxTime || maxTries <= 0) {
+                JOptionPane.showMessageDialog(frame, "Game over! You've used all your tries or time is up!", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
                 break;
             }
 
-            String[] questionSet = questions.poll(); // Retrieve the next question
-            String questionPrompt = "Context Clue: " + questionSet[0] + "\n\n" + questionSet[1];
-            String[] options = {questionSet[3], questionSet[2], questionSet[4]};
-            shuffleArray(options); // Shuffle options to randomize their order
-
-            String userAnswer = (String) JOptionPane.showInputDialog(frame, questionPrompt, "Choose the Answer",
-                    JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            String[] sentencePair = sentences.poll();
+            String userAnswer = getUserInput("Translate: " + sentencePair[0]);
 
             if (userAnswer == null) {
-                if (confirmExit(frame)) {
-                    frame.dispose();
-                    return -1;
+                if(confirmExit(frame)) {
+                	frame.dispose();
+                	return -1;
                 }
                 continue;
             }
 
             attempts++;
-            if (userAnswer.equals(questionSet[2])) { 
-                JOptionPane.showMessageDialog(frame, "Correct! Well done.");
+            if (userAnswer.equalsIgnoreCase(sentencePair[1])) {
+                JOptionPane.showMessageDialog(null, "Correct!");
                 score += 10;
             } else {
-                JOptionPane.showMessageDialog(frame, "Wrong! The correct answer was: " + questionSet[2]);
+                JOptionPane.showMessageDialog(null, "Wrong! Correct: " + sentencePair[1]);
                 maxTries--;
             }
         }
 
         UserDatabase.updateStats(getUserID(), "RPlayed");
-        return calculateScore(attempts, (System.currentTimeMillis() - startTime) / 1000, attempts);
+        return calculateScore(attempts, (System.currentTimeMillis() - startTime) / 1000, maxQuestions);
     }
-
-    private boolean confirmExit(JFrame frame) {
-        int result = JOptionPane.showConfirmDialog(frame, "Do you want to exit the game?", "Exit Game",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        return result == JOptionPane.YES_OPTION;
-    }
-
-    private void shuffleArray(String[] array) {
-        for (int i = array.length - 1; i > 0; i--) {
-            int index = (int) (Math.random() * (i + 1));
-            String temp = array[index];
-            array[index] = array[i];
-            array[i] = temp;
-        }
+    
+    private boolean confirmExit (JFrame frame) {
+    	int result = JOptionPane.showConfirmDialog(frame,"Do you want to exit the game?", "Exit Game",
+    			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    	return result == JOptionPane.YES_OPTION;
     }
 }

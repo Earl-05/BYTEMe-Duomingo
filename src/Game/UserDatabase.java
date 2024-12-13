@@ -3,13 +3,8 @@ package Game;
 import java.io.*;
 import java.util.*;
 import javax.swing.JOptionPane;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-
-
-
 
 public class UserDatabase {
     private static final String DB_FILE = getDatabaseFilePath();
@@ -120,8 +115,8 @@ public class UserDatabase {
             case "RPlayed":
                 user.setRPlayed(user.getRPlayed() + 1);
                 break;
-            case "SWPlayed":
-                user.setSWPlayed(user.getSWPlayed() + 1);
+            case "WGPlayed":
+                user.setWGPlayed(user.getWGPlayed() + 1);
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Invalid game type. Update failed.", "Error", JOptionPane.ERROR_MESSAGE);
