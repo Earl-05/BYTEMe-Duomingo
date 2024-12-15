@@ -133,9 +133,7 @@ public class UserDatabase {
                 return;
         }
 
-        user.setGamesWon(user.getGamesWon() + 1);
-        
-        Achievement.checkAndUpdateAchievements(user);
+        user.setGamesPlayed(user.getGamesPlayed() + 1);
 
         userMap.put(userID, user);
         saveDatabase();

@@ -19,7 +19,7 @@ public class Game {
 
             String[] gameOptions = {
                 "Word Association",
-                "Scramble Word Game", // Replaced Word Guessing with Scramble Word Game
+                "Scramble Word Game",
                 "Reading",
                 "Exit"
             };
@@ -45,7 +45,7 @@ public class Game {
                 }
                 case 1 -> {
                     int difficulty = chooseDifficulty(currentCourse.getDifficulty());
-                    int result = new ScrambleWordGame(difficulty, currentCourse.getCourseName()).playGame(); // Integrated ScrambleWordGame
+                    int result = new ScrambleWordGame(difficulty, currentCourse.getCourseName()).playGame();
                     if (result == -1) {
                         continue;
                     }

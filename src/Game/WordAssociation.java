@@ -42,7 +42,7 @@ public class WordAssociation extends GameBase {
         });
         
         String instructionMessage;
-        if (difficulty == 0) {
+        if (getDifficulty() == 0) {
             instructionMessage = "Welcome to the Word Association Game!\n"
                 + "1. In this game, you will be given a word.\n"
                 + "2. Your task is to translate it correctly.\n"
@@ -62,8 +62,8 @@ public class WordAssociation extends GameBase {
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
-        int maxTime = difficulty == 0 ? 120 : 45;
-        int maxQuestions = Math.min(10 + (difficulty * 5), wordPairs.size());
+        int maxTime = getDifficulty() == 0 ? 120 : 45;
+        int maxQuestions = Math.min(10 + (getDifficulty() * 5), wordPairs.size());
 
         for (int i = 0; i < maxQuestions; i++) {
             if ((System.currentTimeMillis() - startTime) / 1000 > maxTime) {
@@ -122,9 +122,6 @@ public class WordAssociation extends GameBase {
         if (maxTries > 0) {
         	JOptionPane.showMessageDialog(null, "Congratulations! Your final score: " + score, "Game Completed", JOptionPane.INFORMATION_MESSAGE);
         	UserDatabase.updateStats(userID.trim(), "WAPlayed", score);
-        	
-        	Achievement.checkAndUpdateAchievements(userDetails);
-        	
         } else {
         	JOptionPane.showMessageDialog(null, "Game Over! Your final score: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
         }

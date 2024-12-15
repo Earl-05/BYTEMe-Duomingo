@@ -90,7 +90,7 @@ public class ScrambleWordGame extends GameBase {
     }
 
     private String getInstructionMessage() {
-        return difficulty == 0 ? "Welcome to the Scramble Word Game!\n"
+        return getDifficulty() == 0 ? "Welcome to the Scramble Word Game!\n"
                 + "1. You'll be shown a scrambled word and a hint.\n"
                 + "2. Unscramble the word to guess the correct answer.\n"
                 + "3. You will have 5 tries and a time limit of 120 seconds.\n"
