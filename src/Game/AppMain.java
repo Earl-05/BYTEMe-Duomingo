@@ -267,7 +267,7 @@ public class AppMain {
         int currentIndex = 0;
         while (true) {
             UserDetails currentUser = userDetails.get(currentIndex);
-            StringBuilder userDetail = new StringBuilder("===== User Details =====\n")
+            StringBuilder userDetail = new StringBuilder("===== DUOMINGGO USERS =====\n")
                     .append("Name: ").append(currentUser.getUserName()).append("\n")
                     .append("Email: ").append(currentUser.getEmail()).append("\n")
                     .append("Birthday: ").append(currentUser.getBirthday()).append("\n")
