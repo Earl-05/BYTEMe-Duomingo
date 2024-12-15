@@ -64,7 +64,7 @@ public class GameDatabase {
         }
     }
 
-    // Load scramble word entries
+
     private static List<ScrambleWordGame.WordEntry> loadWordEntries(String fileName, String language, int difficulty) {
         File file = new File(fileName);
         if (!file.exists()) {

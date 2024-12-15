@@ -61,7 +61,7 @@ public abstract class GameBase implements GameInterface {
         return Math.max(0, (maxQuestions * 10) - (int) (timeTaken / 2));
     }
 
-    // Public method to shuffle list
+
     public <T> void shuffleList(List<T> list) {
         Collections.shuffle(list);
     }

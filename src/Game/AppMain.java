@@ -303,10 +303,10 @@ public class AppMain {
     }
 
     private static int partition(List<UserDetails> users, int low, int high) {
-        String pivot = users.get(high).getUserName();
+        String pivot = users.get(high).getUserName().toLowerCase();
         int i = (low - 1);
         for (int j = low; j < high; j++) {
-            if (users.get(j).getUserName().compareTo(pivot) <= 0) {
+            if (users.get(j).getUserName().toLowerCase().compareTo(pivot) <= 0) {
                 i++;
                 Collections.swap(users, i, j);
             }
