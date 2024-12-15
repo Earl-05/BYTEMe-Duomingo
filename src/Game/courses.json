@@ -9,6 +9,7 @@
 	   Additionally, you will explore cultural insights into Spanish-speaking countries, making your learning journey both educational and enriching. 
 	   By the end of the course, you will gain the confidence to navigate basic Spanish conversations and understand the structure of this widely spoken language.",
 	   
+       "difficulty": "Intermediate",
        "languages": ["English", "Spanish"]
    },
    {
@@ -21,6 +22,7 @@
 	   Lessons include real-life conversational scenarios, polite forms of speech, and an introduction to Japanese culture, such as traditions and etiquettes. 
 	   Perfect for learners seeking fluency, this course will help you unlock the beauty and complexity of Japanese communication.",
 	   
+       "difficulty": "Hard",
        "languages": ["English", "Japanese"]
    },
    {
@@ -33,7 +35,20 @@
 	   Cultural elements, such as Filipino customs and traditions, are integrated into the lessons, providing you with a richer understanding of the language. 
 	   By the end of this course, you will feel equipped to hold simple conversations in Filipino and appreciate the nuances of this unique language.",
 	   
+       "difficulty": "Easy",
        "languages": ["English", "Filipino"]
+   },
+   {
+       "courseCode": "ENG-112",
+       "courseName": "English",
+       "courseDescription": "Enhance your English proficiency with this comprehensive course tailored for beginner-level learners. 
+	   Covering the four essential language skills—speaking, listening, reading, and writing—you will develop a solid foundation in English communication. 
+	   The course focuses on basic grammar, vocabulary, and pronunciation, with practical exercises such as crafting simple sentences, understanding common phrases, and improving conversational skills. 
+	   You will also gain exposure to different cultural contexts where English is used, helping you adapt to various social and professional scenarios. 
+	   This course ensures a well-rounded understanding of the language and prepares you for further studies in English.",
+	   
+       "difficulty": "Beginner",
+       "languages": ["English"]
    },
    {
        "courseCode": "FRE-104",
@@ -44,6 +59,7 @@
 	   Additionally, the course explores French culture, including its art, history, and culinary traditions, enriching your learning experience. 
 	   By the end of the course, you will be able to engage in more complex conversations and deepen your appreciation of French-speaking societies.",
 	   
+       "difficulty": "Intermediate",
        "languages": ["English", "French"]
    },
    {
@@ -54,6 +70,7 @@
 	   You will learn common phrases, greetings, and expressions used in daily life, as well as gain insights into the culture and traditions of Hiligaynon-speaking communities. 
 	   With engaging practice sessions and contextual learning, you will build a strong foundation in the language and develop the ability to communicate effectively in Hiligaynon.",
 	   
+       "difficulty": "Easy",
        "languages": ["English", "Hiligaynon"]
    }
 ]
