@@ -219,7 +219,7 @@ public class AppMain {
             }
             return age < 14;
         } catch (DateTimeParseException e) {
-            return false; // Invalid birthday format will be caught in validateSignUp
+            return false;
         }
     }
 
