@@ -90,7 +90,7 @@ public class UserDatabase {
         }
         return false;
     }
-    
+
     public static UserDetails getUserByUsername(String userName) {
         for (UserDetails userDetails : userMap.values()) {
             if (userDetails.getUserName().equals(userName)) {
@@ -100,37 +100,66 @@ public class UserDatabase {
         return null;
     }
 
-
-    public static void updateStats(String userID, String gameType) {
+    public static void updateStats(String userID, String gameType, int score) {
         UserDetails user = userMap.get(userID);
         if (user == null) {
             JOptionPane.showMessageDialog(null, "User not found. Update failed.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
+        boolean won = score >= 50;
+
         switch (gameType) {
             case "WAPlayed":
                 user.setWAPlayed(user.getWAPlayed() + 1);
+                if (won) {
+                    user.setWAWon(user.getWAWon() + 1);
+                }
+                break;
+            case "SWPlayed":
+                user.setSWPlayed(user.getSWPlayed() + 1);
+                if (won) {
+                    user.setSWWon(user.getSWWon() + 1);
+                }
                 break;
             case "RPlayed":
                 user.setRPlayed(user.getRPlayed() + 1);
-                break;
-            case "WGPlayed":
-                user.setWGPlayed(user.getWGPlayed() + 1);
+                if (won) {
+                    user.setRWon(user.getRWon() + 1);
+                }
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Invalid game type. Update failed.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
         }
 
-        // Update the total games played
         user.setGamesPlayed(user.getGamesPlayed() + 1);
 
-        // Save the updated user data back to the database
-        userMap.put(userID, user); // Update the map
-        saveDatabase(); // Save changes to the JSON file
+        userMap.put(userID, user);
+        saveDatabase();
 
         JOptionPane.showMessageDialog(null, "Stats updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static int getUserAchievements(String userID) {
+        UserDetails user = userMap.get(userID);
+        if (user != null) {
+            int totalAchievements = user.getWAWon() + user.getRWon() + user.getSWWon();
+            JOptionPane.showMessageDialog(null, "User " + userID + " has achieved " + totalAchievements + " achievements.", "Achievements", JOptionPane.INFORMATION_MESSAGE);
+            return totalAchievements;
+        } else {
+            JOptionPane.showMessageDialog(null, "User not found. Cannot fetch achievements.", "Error", JOptionPane.ERROR_MESSAGE);
+            return 0;
+        }
+    }
+
+    public static int getGlobalAchievements() {
+        int totalAchievements = 0;
+        for (UserDetails user : userMap.values()) {
+            totalAchievements += user.getWAWon() + user.getSWWon() + user.getRWon();
+        }
+        JOptionPane.showMessageDialog(null, "Total achievements across all users: " + totalAchievements, "Global Achievements", JOptionPane.INFORMATION_MESSAGE);
+        return totalAchievements;
     }
 
     private static String getDatabaseFilePath() {

@@ -1,12 +1,9 @@
 package Game;
 
-
 import javax.swing.*;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.file.Paths;
@@ -34,23 +31,11 @@ public class Achievement {
         // Word Association Achievements
         if (!achievements.contains("Matchmaker") && user.getWAPlayed() >= 1) {
             achievements.add("Matchmaker");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Matchmaker! You played 3 Word Association games!");
+            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Matchmaker! You played 1 Word Association game!");
         }
-        
         if (!achievements.contains("Word Wizard") && user.getWAPlayed() >= 10) {
             achievements.add("Word Wizard");
             JOptionPane.showMessageDialog(null, "Achievement Unlocked: Word Wizard! You played 10 Word Association games!");
-        }
-
-        // Word Guessing Achievements
-        if (!achievements.contains("Guess Who?") && user.getWGPlayed() >= 3) {
-            achievements.add("Guess Who?");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Guess Who? You played 3 Word Guessing games.");
-        }
-        
-        if (!achievements.contains("Word Whisperer") && user.getWAPlayed() >= 10) {
-            achievements.add("Word Whisperer");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Word Whisperer! You played 10 Word Guessing games!");
         }
 
         // Reading Achievements
@@ -58,10 +43,19 @@ public class Achievement {
             achievements.add("Bookworm Beginner");
             JOptionPane.showMessageDialog(null, "Achievement Unlocked: Bookworm Beginner! You played 3 Reading games.");
         }
-        
-        if (!achievements.contains("Narrative Ninja") && user.getWAPlayed() >= 10) {
+        if (!achievements.contains("Narrative Ninja") && user.getRPlayed() >= 10) {
             achievements.add("Narrative Ninja");
             JOptionPane.showMessageDialog(null, "Achievement Unlocked: Narrative Ninja! You played 10 Reading games!");
+        }
+
+        // Scramble Word Game Achievements
+        if (!achievements.contains("Scrambler") && user.getSWPlayed() >= 1) {
+            achievements.add("Scrambler");
+            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Scrambler! You played 1 Scramble Word Game.");
+        }
+        if (!achievements.contains("Word Scrambler Pro") && user.getSWPlayed() >= 5) {
+            achievements.add("Word Scrambler Pro");
+            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Word Scrambler Pro! You played 5 Scramble Word Games.");
         }
 
         // Update the JSON file

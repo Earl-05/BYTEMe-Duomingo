@@ -12,7 +12,6 @@ public abstract class GameBase {
     public GameBase(int difficulty, String language) {
         this.difficulty = difficulty;
         this.language = language;
-        this.userID = userID;
     }
 
     public abstract int playGame();

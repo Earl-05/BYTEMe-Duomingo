@@ -8,14 +8,18 @@ import java.util.*;
 public class ScrambleWordGame extends GameBase {
     private Stack<WordEntry> words;
     private int maxTime;
+    private int maxTries;
+    private List<String> specialCases;
 
     public ScrambleWordGame(int difficulty, String language) {
         super(difficulty, language);
         List<WordEntry> wordList = GameDatabase.loadScrambleWordData(language, difficulty);
-        Collections.shuffle(wordList); // Shuffle the word list for randomness
+        Collections.shuffle(wordList); 
         this.words = new Stack<>();
         this.words.addAll(wordList);
-        this.maxTime = difficulty == 0 ? 120 : 75; // Time limit based on difficulty
+        this.maxTime = difficulty == 0 ? 120 : 75; 
+        this.maxTries = difficulty == 0 ? 5 : 3;
+        this.specialCases = List.of(".", ",", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "?", ";", ":", "|");
     }
 
     @Override
@@ -37,32 +41,36 @@ public class ScrambleWordGame extends GameBase {
             }
         });
 
-        JOptionPane.showMessageDialog(frame,
-                "Welcome to the Scramble Word Game!\n\n"
-                        + "You'll be shown a scrambled word and a hint.\n"
-                        + "Unscramble the word to guess the correct answer.\n"
-                        + "Good luck!",
-                "Instructions",
-                JOptionPane.INFORMATION_MESSAGE);
+        String instructionMessage = getInstructionMessage();
+        JOptionPane.showMessageDialog(frame, instructionMessage, "Instruction", JOptionPane.INFORMATION_MESSAGE);
 
         int score = 0;
         long startTime = System.currentTimeMillis();
-
+        boolean successfullyCompleted = true;
         while (!words.isEmpty()) {
             if ((System.currentTimeMillis() - startTime) / 1000 > maxTime) {
                 JOptionPane.showMessageDialog(frame, "Time's up! Game Over!", "Game Over", JOptionPane.ERROR_MESSAGE);
+                successfullyCompleted = false;
+                break;
+            }
+
+            if (maxTries <= 0) {
+                JOptionPane.showMessageDialog(frame, "You've used all your tries! Game Over!", "Game Over", JOptionPane.ERROR_MESSAGE);
+                successfullyCompleted = false;
                 break;
             }
 
             WordEntry currentWord = words.pop();
-            String userAnswer = JOptionPane.showInputDialog(frame,
-                    "Scrambled Word: " + currentWord.getScrambled() + "\nHint: " + currentWord.getHint());
+            String userAnswer = getUserAnswer(frame, currentWord);
 
-            if (userAnswer == null) {
-                if (confirmExit(frame)) {
-                    frame.dispose();
-                    return score; // Save progress
-                }
+            if (userAnswer == null) { 
+                return score;
+            }
+            
+            boolean containsSpecialCase = specialCases.stream().anyMatch(userAnswer::contains);
+            if (containsSpecialCase) {
+                JOptionPane.showMessageDialog(frame, "Special case detected. This input will be ignored.", "Special Case", JOptionPane.WARNING_MESSAGE);
+                words.push(currentWord); 
                 continue;
             }
 
@@ -70,17 +78,61 @@ public class ScrambleWordGame extends GameBase {
                 JOptionPane.showMessageDialog(frame, "Correct!");
                 score += 10;
             } else {
-                JOptionPane.showMessageDialog(frame,
-                        "Wrong! The correct answer was: " + currentWord.getAnswer());
+                JOptionPane.showMessageDialog(frame, "Wrong! The correct answer was: " + currentWord.getAnswer());
+                maxTries--;
             }
         }
 
         frame.dispose();
-
-        JOptionPane.showMessageDialog(null, "Your final score: " + score,
-                "Game Over", JOptionPane.INFORMATION_MESSAGE);
-        UserDatabase.updateStats(getUserID(), "SW");
+        showCompletionMessage(successfullyCompleted, score);
+        UserDatabase.updateStats(getUserID(), "SW", score);
         return score;
+    }
+
+    private String getInstructionMessage() {
+        return difficulty == 0 ? "Welcome to the Scramble Word Game!\n"
+                + "1. You'll be shown a scrambled word and a hint.\n"
+                + "2. Unscramble the word to guess the correct answer.\n"
+                + "3. You will have 5 tries and a time limit of 120 seconds.\n"
+                + "Good luck!\n"
+                + "Press 'Cancel' to exit the game and return to the main menu."
+                : "Welcome to the Scramble Word Game!\n"
+                + "1. You'll be shown a scrambled word and a hint.\n"
+                + "2. Unscramble the word to guess the correct answer.\n"
+                + "3. You will have 3 tries and a time limit of 75 seconds.\n"
+                + "Good luck!\n"
+                + "Press 'Cancel' to exit the game and return to the main menu.";
+    }
+
+    private String getUserAnswer(JFrame frame, WordEntry currentWord) {
+        String userAnswer = null;
+
+        do {
+            userAnswer = JOptionPane.showInputDialog(frame,
+                    "Scrambled Word: " + currentWord.getScrambled() + "\nHint: " + currentWord.getHint());
+
+            if (userAnswer == null) { 
+                if (confirmExit(frame)) {
+                    frame.dispose();
+                    return null;
+                }
+            } else if (userAnswer.trim().isEmpty()) { 
+                JOptionPane.showMessageDialog(frame, "Input cannot be empty. Please try again.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } while (userAnswer == null || userAnswer.trim().isEmpty());
+
+        return userAnswer.trim();
+    }
+
+    private void showCompletionMessage(boolean successfullyCompleted, int score) {
+        if (successfullyCompleted) {
+            JOptionPane.showMessageDialog(null, "Congratulations! You successfully completed the game. Your final score: " + score,
+                    "Game Completed", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Game over! Your final score: " + score,
+                    "Game Over", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     private boolean confirmExit(JFrame frame) {
@@ -94,7 +146,6 @@ public class ScrambleWordGame extends GameBase {
         return result == JOptionPane.YES_OPTION;
     }
 
-    // Nested WordEntry class for managing word data
     public static class WordEntry {
         private final String scrambled;
         private final String answer;
@@ -118,7 +169,6 @@ public class ScrambleWordGame extends GameBase {
             return hint;
         }
 
-        // Scramble the word directly in this method
         public static String scrambleWord(String word) {
             List<Character> characters = new ArrayList<>();
             for (char c : word.toCharArray()) {

@@ -71,7 +71,6 @@ public class AppMain {
         }
     }
 
-
     private static void signUp() {
         JPanel panel = new JPanel(new GridLayout(5, 2, 10, 10));
 
@@ -115,7 +114,7 @@ public class AppMain {
 
             List<String> achievements = new ArrayList<>();
 
-            UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, achievements, mainLanguage, 0, 0, 0, 0);
+            UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, achievements, mainLanguage, 0, 0, 0, 0, 0, 0, result);
             UserDatabase.addUser(newUser);
         }
     }
@@ -131,12 +130,10 @@ public class AppMain {
         while (true) {
             UserDetails currentUser = userDetails.get(currentIndex);
             StringBuilder userDetail = new StringBuilder("===== User Details =====\n")
-                    .append("User ID: ").append(currentUser.getUserID()).append("\n")
                     .append("Name: ").append(currentUser.getUserName()).append("\n")
                     .append("Email: ").append(currentUser.getEmail()).append("\n")
                     .append("Birthday: ").append(currentUser.getBirthday()).append("\n")
-                    .append("Course: ").append(currentUser.getCurrentCourse()).append("\n")
-                    .append("Main Language: ").append(currentUser.getMainLanguage()).append("\n");
+                    .append("Course: ").append(currentUser.getCurrentCourse()).append("\n");
 
             int option = JOptionPane.showOptionDialog(
                     null,
@@ -151,7 +148,7 @@ public class AppMain {
 
             if (option == 0) { // Previous
                 currentIndex = (currentIndex - 1 + userDetails.size()) % userDetails.size();
-            } else if (option == 1) { // Next    
+            } else if (option == 1) { // Next
                 currentIndex = (currentIndex + 1) % userDetails.size();
             } else { // Close
                 break;

@@ -5,16 +5,22 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class WordAssociation extends GameBase {
     private LinkedList<String[]> wordPairs;
 	private int maxTries;
+	private List<String> specialCases;
+	private boolean exitConfirmed = false;
+	private UserDetails userDetails;
 
-    public WordAssociation(int difficulty, String language) {
+    public WordAssociation(int difficulty, String language, UserDetails userDetails) {
         super(difficulty, language);
         this.wordPairs = GameDatabase.loadWordAssociationData(language, difficulty);
         Collections.shuffle(wordPairs);
         this.maxTries = difficulty == 0? 5 : 3;
+        this.specialCases = List.of(".", ",", "!", "@", "#", "$" , "%" , "^" , "&" , "*" , "(" , ")" , "-" , "_" , "=" , "+" , "?" , ";" , ":" , "|");
+        this.userDetails = userDetails;
     }
 
     @Override
@@ -34,18 +40,40 @@ public class WordAssociation extends GameBase {
                 }
             }
         });
+        
+        String instructionMessage;
+        if (difficulty == 0) {
+            instructionMessage = "Welcome to the Word Association Game!\n"
+                + "1. In this game, you will be given a word.\n"
+                + "2. Your task is to translate it correctly.\n"
+                + "3. You will have 5 tries and a time limit of 120 seconds.\n"
+                + "Good Luck!\n"
+                + "Press 'Cancel' to exit the game and return to the main menu.";
+        } else {
+            instructionMessage = "Welcome to the Word Association Game!\n"
+                + "1. In this game, you will be given a word.\n"
+                + "2. Your task is to translate it correctly.\n"
+                + "3. You will have 3 tries and a time limit of 60 seconds.\n"
+                + "Good Luck!\n"
+                + "Press 'Cancel' to exit the game and return to the main menu.";
+        }
 
-        JOptionPane.showMessageDialog(frame, "In this game, you will be given a word. Your task is to translate it correctly.\nYou will have 5 tries (Beginner) and 3 tries (Intermediate) and a time limit of 60 seconds (Beginner) and 45 seconds (Intermediate).\nPress 'Cancel' to exit the game and return to the main menu.", "INSTRUCTION",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(frame, instructionMessage, "Instruction", JOptionPane.INFORMATION_MESSAGE);
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
-        int maxTime = difficulty == 0 ? 60 : 45;
+        int maxTime = difficulty == 0 ? 120 : 45;
         int maxQuestions = Math.min(10 + (difficulty * 5), wordPairs.size());
 
         for (int i = 0; i < maxQuestions; i++) {
-            if ((System.currentTimeMillis() - startTime) / 1000 > maxTime || maxTries <= 0) {
-                JOptionPane.showMessageDialog(frame, "Game over! You've used all your tries or time is up!", "GAME OVER",JOptionPane.INFORMATION_MESSAGE);
+            if ((System.currentTimeMillis() - startTime) / 1000 > maxTime) {
+                JOptionPane.showMessageDialog(frame, "Time is up! Game Over!", "Game Over",JOptionPane.ERROR_MESSAGE);
                 break;
+            }
+            
+            if (maxTries <= 0) {
+            	JOptionPane.showMessageDialog(frame, "You've used all of your tries! Game Over!", "Game Over", JOptionPane.ERROR_MESSAGE);
+            	break;
             }
 
             String[] pair = wordPairs.removeFirst();
@@ -56,7 +84,16 @@ public class WordAssociation extends GameBase {
                 	frame.dispose();
                 	return -1;
                 }
+                
+                i--;
+                
                 continue;
+            }
+            
+            if (specialCases.contains(userAnswer.trim().toLowerCase())) {
+            	JOptionPane.showMessageDialog(frame, "Special case detected. This input will be ignored.", "Special Case", JOptionPane.WARNING_MESSAGE);
+            	i--;
+            	continue;
             }
 
             attempts++;
@@ -67,21 +104,69 @@ public class WordAssociation extends GameBase {
                 JOptionPane.showMessageDialog(frame, "Wrong! Correct: " + pair[1]);
                 maxTries--;
             }
+            
+            if (maxTries == 0) {
+            	JOptionPane.showMessageDialog(frame, "You've used all of your tries! Game Over!", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+            	break;
+            }
         }
 
         frame.dispose();
-
-        UserDatabase.updateStats(getUserID(), "WAPlayed");
+        
+        String userID = userDetails.getUserID();
+        if (userID == null) {
+        	JOptionPane.showMessageDialog(null, "User not logged in. Cannot update stats.", "Error", JOptionPane.ERROR_MESSAGE);
+        	return 0;
+        }
+        
+        if (maxTries > 0) {
+        	JOptionPane.showMessageDialog(null, "Congratulations! Your final score: " + score, "Game Completed", JOptionPane.INFORMATION_MESSAGE);
+        	UserDatabase.updateStats(userID.trim(), "WAPlayed", score);
+        } else {
+        	JOptionPane.showMessageDialog(null, "Game Over! Your final score: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+        }
         return calculateScore(attempts, (System.currentTimeMillis() - startTime) / 1000, maxQuestions);
     }
 
     private String getUserInput(JFrame frame, String prompt) {
-        return JOptionPane.showInputDialog(frame, prompt);
+    	String input = null;
+    	boolean containsSpecialCase = false;
+    	
+    	while (input == null || input.trim().isEmpty() || containsSpecialCase) {
+    		containsSpecialCase = false;
+    		input = JOptionPane.showInputDialog(frame, prompt);
+    		if (input == null) {
+    			if (confirmExit(frame)) {
+    				if (frame.isDisplayable()) {
+    				frame.dispose();
+    				}
+    				return null;	
+    			}
+    		}
+    		
+    		input = input.trim();
+    		if (input.isEmpty()) {
+    			JOptionPane.showMessageDialog(frame, "The input is empty. Please input an answer and try again.", "Invalid", JOptionPane.WARNING_MESSAGE);
+    		} else {
+    			for (String special : specialCases) {
+    				if (input.contains(special)) {
+    					containsSpecialCase = true;
+    					JOptionPane.showMessageDialog(frame, "Special case detected. The input will be ignored.", "Special Case", JOptionPane.WARNING_MESSAGE);
+    					break;
+    				}
+    			}
+    		}
+    	}
+        return input;
     }
     
     private boolean confirmExit (JFrame frame) {
+    	if (exitConfirmed) {
+    		return true;
+    	}
     	int result = JOptionPane.showConfirmDialog(frame,"Do you want to exit the game?", "Exit Game",
     			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    	return result == JOptionPane.YES_OPTION;
+    	exitConfirmed = (result == JOptionPane.YES_OPTION);
+    	return exitConfirmed;
     }
 }
