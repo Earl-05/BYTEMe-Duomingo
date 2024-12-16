@@ -13,7 +13,7 @@ public class Game {
         }
 
         boolean keepPlaying = true;
-        int totalScore = 0;
+        int sessionScore = 0; // Tracks the score for the current session.
 
         while (keepPlaying) {
 
@@ -35,32 +35,40 @@ public class Game {
                     null, gameOptions, gameOptions[0]);
 
             switch (gameChoice) {
-                case 0 -> {
+                case 0 -> { // Word Association
                     int difficulty = chooseDifficulty(currentCourse.getDifficulty());
                     int result = new WordAssociation(difficulty, currentCourse.getCourseName(), userDetails).playGame();
                     if (result == -1) {
                         continue;
                     }
-                    totalScore += result;
+                    sessionScore += result; // Add session score.
+                    UserDatabase.updateStats(userDetails.getUserID(), "WAPlayed", result);
                 }
-                case 1 -> {
+                case 1 -> { // Scramble Word Game
                     int difficulty = chooseDifficulty(currentCourse.getDifficulty());
                     int result = new ScrambleWordGame(difficulty, currentCourse.getCourseName()).playGame();
                     if (result == -1) {
                         continue;
                     }
-                    totalScore += result;
+                    sessionScore += result; // Add session score.
+                    UserDatabase.updateStats(userDetails.getUserID(), "SWPlayed", result);
                 }
-                case 2 -> {
+                case 2 -> { // Reading
                     int difficulty = chooseDifficulty(currentCourse.getDifficulty());
                     int result = new Reading(difficulty, currentCourse.getCourseName()).playGame();
                     if (result == -1) {
                         continue;
                     }
-                    totalScore += result;
+                    sessionScore += result; // Add session score.
+                    UserDatabase.updateStats(userDetails.getUserID(), "RPlayed", result);
                 }
                 case 3, -1 -> {
-                    JOptionPane.showMessageDialog(null, "Thank you for playing! Your total score is: " + totalScore);
+                    userDetails.setTotalScore(userDetails.getTotalScore() + sessionScore);
+                    UserDatabase.updateUser(userDetails); 
+
+                    JOptionPane.showMessageDialog(null, "Thank you for playing! Your total score for this session is: " + sessionScore
+                            + "\nYour lifetime total score is now: " + userDetails.getTotalScore());
+
                     keepPlaying = false;
                     User.welcomeUser(userDetails);
                 }

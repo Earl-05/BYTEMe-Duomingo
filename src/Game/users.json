@@ -8,13 +8,14 @@
     "currentCourse": "Filipino",
     "achievements": [],
     "mainLanguage": "English",
-    "gamesPlayed": 2,
-    "WAPlayed": 2,
+    "gamesPlayed": 5,
+    "WAPlayed": 5,
     "RPlayed": 0,
     "SWPlayed": 0,
-    "WAWon": 1,
+    "WAWon": 4,
     "SWWon": 0,
-    "RWon": 0
+    "RWon": 0,
+    "totalScore": 298
   },
   {
     "userID": "928d26c4-ecfc-4e13-92bf-35a2b2e6a65d",
@@ -31,7 +32,8 @@
     "SWPlayed": 0,
     "WAWon": 0,
     "SWWon": 0,
-    "RWon": 0
+    "RWon": 0,
+    "totalScore": 0
   },
   {
     "userID": "6675a11d-affa-4519-bc1f-2e545a4ef15c",
@@ -48,7 +50,8 @@
     "SWPlayed": 0,
     "WAWon": 0,
     "SWWon": 0,
-    "RWon": 0
+    "RWon": 0,
+    "totalScore": 0
   },
   {
     "userID": "358a5f29-ee02-4d3b-8f22-8701cc0d77a6",
@@ -65,6 +68,7 @@
     "SWPlayed": 0,
     "WAWon": 0,
     "SWWon": 0,
-    "RWon": 0
+    "RWon": 0,
+    "totalScore": 0
   }
 ]

@@ -29,7 +29,8 @@ public class User {
                 "Email: <b>" + userDetails.getEmail() + "</b><br>" +
                 "Birthday: <b>" + userDetails.getBirthday() + "</b><br>" +
                 "Current Course: <b>" + (userDetails.getCurrentCourse() == null ? "N/A" : userDetails.getCurrentCourse()) + "</b><br>" +
-                "Main Language: <b>" + userDetails.getMainLanguage() + "</b>" +
+                "Main Language: <b>" + userDetails.getMainLanguage() + "</b><br>" +
+                "Your total score: <b> " + userDetails.getTotalScore() + "</b>" +
                 "</html>");
         userInfo.setFont(new Font("Arial", Font.PLAIN, 14));
         userInfo.setAlignmentX(JLabel.CENTER_ALIGNMENT);

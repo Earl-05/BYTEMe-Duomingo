@@ -162,16 +162,16 @@ public class AppMain {
             if (isUnderAge(birthday)) {
                 UserDetails underageUser = new UserDetails(
                         userID, userName, password, email, birthday, selectedCourse,
-                        achievements, mainLanguage, 0, 0, 0, 0, 0, 0, result
+                        achievements, mainLanguage, 0, 0, 0, 0, 0, 0, 0, result
                 );
                 parentalConsentForm(underageUser);
                 return;
             }
 
-            UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, achievements, mainLanguage, 0, 0, 0, 0, 0, 0, result);
+            UserDetails newUser = new UserDetails(userID, userName, password, email, birthday, selectedCourse, achievements, mainLanguage, 0, 0, 0, 0, 0, 0, 0, result);
             UserDatabase.addUser(newUser);
             JOptionPane.showMessageDialog(null, "Sign up successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-            break;
+            break; 
         }
     }
 

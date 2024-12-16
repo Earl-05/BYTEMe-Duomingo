@@ -59,6 +59,15 @@ public class UserDatabase {
         return userMap.get(userID);
     }
 
+    public static UserDetails getUserByUsername(String userName) {
+        for (UserDetails userDetails : userMap.values()) {
+            if (userDetails.getUserName().equals(userName)) {
+                return userDetails;
+            }
+        }
+        return null;
+    }
+    
     public static void updateUser(UserDetails userDetails) {
         if (userMap.containsKey(userDetails.getUserID())) {
             userMap.put(userDetails.getUserID(), userDetails);
@@ -91,15 +100,6 @@ public class UserDatabase {
         return false;
     }
 
-    public static UserDetails getUserByUsername(String userName) {
-        for (UserDetails userDetails : userMap.values()) {
-            if (userDetails.getUserName().equals(userName)) {
-                return userDetails;
-            }
-        }
-        return null;
-    }
-
     public static void updateStats(String userID, String gameType, int score) {
         UserDetails user = userMap.get(userID);
         if (user == null) {
@@ -108,6 +108,9 @@ public class UserDatabase {
         }
 
         boolean won = score >= 50;
+
+        // Update score
+        user.setTotalScore(user.getTotalScore() + score);
 
         switch (gameType) {
             case "WAPlayed":
