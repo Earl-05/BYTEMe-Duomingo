@@ -106,6 +106,8 @@ public class UserDatabase {
             JOptionPane.showMessageDialog(null, "User not found. Update failed.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        user.setTotalScore(user.getTotalScore() + score); 
 
         boolean won = score >= 50;
 
@@ -133,7 +135,7 @@ public class UserDatabase {
                 return;
         }
 
-        user.setGamesWon(user.getGamesWon() + 1);
+        user.setGamesPlayed(user.getGamesPlayed() + 1);
         
         Achievement.checkAndUpdateAchievements(user);
 

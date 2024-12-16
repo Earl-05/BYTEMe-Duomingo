@@ -10,14 +10,16 @@ public class ScrambleWordGame extends GameBase {
     private int maxTime;
     private int maxTries;
     private List<String> specialCases;
+    private UserDetails userDetails;
 
-    public ScrambleWordGame(int difficulty, String language) {
+    public ScrambleWordGame(int difficulty, String language, UserDetails userDetails) {
         super(difficulty, language);
+        this.userDetails = userDetails;
         List<WordEntry> wordList = GameDatabase.loadScrambleWordData(language, difficulty);
-        Collections.shuffle(wordList); 
+        Collections.shuffle(wordList);
         this.words = new Stack<>();
         this.words.addAll(wordList);
-        this.maxTime = difficulty == 0 ? 120 : 75; 
+        this.maxTime = difficulty == 0 ? 120 : 75;
         this.maxTries = difficulty == 0 ? 5 : 3;
         this.specialCases = List.of(".", ",", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "?", ";", ":", "|");
     }
@@ -63,14 +65,14 @@ public class ScrambleWordGame extends GameBase {
             WordEntry currentWord = words.pop();
             String userAnswer = getUserAnswer(frame, currentWord);
 
-            if (userAnswer == null) { 
+            if (userAnswer == null) {
                 return score;
             }
-            
+
             boolean containsSpecialCase = specialCases.stream().anyMatch(userAnswer::contains);
             if (containsSpecialCase) {
                 JOptionPane.showMessageDialog(frame, "Special case detected. This input will be ignored.", "Special Case", JOptionPane.WARNING_MESSAGE);
-                words.push(currentWord); 
+                words.push(currentWord);
                 continue;
             }
 
@@ -79,18 +81,24 @@ public class ScrambleWordGame extends GameBase {
                 score += 10;
             } else {
                 JOptionPane.showMessageDialog(frame, "Wrong! The correct answer was: " + currentWord.getAnswer());
+               
+
                 maxTries--;
             }
         }
 
         frame.dispose();
         showCompletionMessage(successfullyCompleted, score);
-        UserDatabase.updateStats(getUserID(), "SW", score);
+
+        updateUserStats(score);
+
+        Achievement.checkAndUpdateAchievements(userDetails);
+
         return score;
     }
 
     private String getInstructionMessage() {
-        return difficulty == 0 ? "Welcome to the Scramble Word Game!\n"
+        return getDifficulty() == 0 ? "Welcome to the Scramble Word Game!\n"
                 + "1. You'll be shown a scrambled word and a hint.\n"
                 + "2. Unscramble the word to guess the correct answer.\n"
                 + "3. You will have 5 tries and a time limit of 120 seconds.\n"
@@ -111,12 +119,12 @@ public class ScrambleWordGame extends GameBase {
             userAnswer = JOptionPane.showInputDialog(frame,
                     "Scrambled Word: " + currentWord.getScrambled() + "\nHint: " + currentWord.getHint());
 
-            if (userAnswer == null) { 
+            if (userAnswer == null) {
                 if (confirmExit(frame)) {
                     frame.dispose();
                     return null;
                 }
-            } else if (userAnswer.trim().isEmpty()) { 
+            } else if (userAnswer.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(frame, "Input cannot be empty. Please try again.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -144,6 +152,18 @@ public class ScrambleWordGame extends GameBase {
                 JOptionPane.QUESTION_MESSAGE
         );
         return result == JOptionPane.YES_OPTION;
+    }
+
+    private void updateUserStats(int score) {
+        String userID = userDetails.getUserID();
+
+        userDetails.setSWPlayed(userDetails.getSWPlayed() + 1);
+        if (score >= 50) { 
+            userDetails.setSWWon(userDetails.getSWWon() + 1);
+        }
+        userDetails.setGamesPlayed(userDetails.getGamesPlayed() + 1);
+
+        UserDatabase.updateUser(userDetails);
     }
 
     public static class WordEntry {
@@ -174,7 +194,7 @@ public class ScrambleWordGame extends GameBase {
             for (char c : word.toCharArray()) {
                 characters.add(c);
             }
-            Collections.shuffle(characters); // Shuffle the characters to scramble the word
+            Collections.shuffle(characters);
             StringBuilder scrambled = new StringBuilder();
             for (char c : characters) {
                 scrambled.append(c);

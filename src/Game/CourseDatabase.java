@@ -7,23 +7,20 @@ import com.google.gson.Gson;
 
 
 
-
-
-
 public class CourseDatabase {
 
     private static final String COURSES_FILE = getFilePath("courses.json");
     private static List<CourseDetails> courses;
 
     static {
-        loadCourses();
+        loadCourses();	
     }
 
     private static void loadCourses() {
         File file = new File(COURSES_FILE);
         if (!file.exists()) {
             System.err.println("Courses file not found: " + COURSES_FILE);
-            courses = new ArrayList<>(); // Initialize an empty list if file is not found
+            courses = new ArrayList<>(); 
             return;
         }
 

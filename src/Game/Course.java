@@ -1,6 +1,13 @@
 package Game;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.*;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 public class Course {
@@ -10,13 +17,10 @@ public class Course {
             boolean continueCourse = true;
             while (continueCourse) {
 
-                String adjustedDifficulty = adjustDifficulty(currentCourse.getDifficulty(), currentCourse.getLanguages(), userDetails.getMainLanguage());
-
                 String[] options = {"Start Course", "Change Course", "Exit"};
 
                 int choice = JOptionPane.showOptionDialog(null,
                         "Selected Course: " + currentCourse.getCourseName() + "\n" +
-                        "Difficulty: " + adjustedDifficulty + "\n" +
                         "Description: " + currentCourse.getCourseDescription(),
                         "Course Management",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
@@ -58,7 +62,17 @@ public class Course {
     private static void changeCourse(UserDetails userDetails) {
         int confirm = JOptionPane.showConfirmDialog(null, "Changing the course will lose all progress. Do you want to continue?");
         if (confirm == JOptionPane.YES_OPTION) {
+        	
+        	userDetails.setGamesPlayed(0);
+            userDetails.setWAPlayed(0);
+            userDetails.setRPlayed(0);
+            userDetails.setSWPlayed(0);
+            userDetails.setWAWon(0);
+            userDetails.setSWWon(0);
+            userDetails.setRWon(0);
+            
             selectCourse(userDetails);
+            saveUserDetails(userDetails);
         }
     }
 
@@ -75,25 +89,58 @@ public class Course {
                 null, courseOptions, courseOptions[0]);
         if (selectedCourse != null) {
             userDetails.setCurrentCourse(selectedCourse);
+            saveUserDetails(userDetails); 
             JOptionPane.showMessageDialog(null, "Course selected successfully!");
+            User.welcomeUser(userDetails);
+            
         }
     }
 
-    private static String adjustDifficulty(String defaultDifficulty, String[] courseLanguages, String userMainLanguage) {
-        for (String language : courseLanguages) {
-            if (language.equalsIgnoreCase(userMainLanguage)) {
-                return defaultDifficulty; 
+   
+    private static void saveUserDetails(UserDetails userDetails) {
+        try {
+        	
+            String filePath = getFilePath("users.json");
+            Gson gson = new Gson();
+            Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            File file = new File(filePath);
+            
+            if (!file.exists()) {
+                System.err.println("users.json file not found!");
+                return;
             }
+            
+            try (FileReader reader = new FileReader(file)) {
+                UserDetails[] users = gson.fromJson(reader, UserDetails[].class);
+                
+                for (UserDetails user : users) {
+                    if (user.getUserID().equals(userDetails.getUserID())) {
+                    	user.setCurrentCourse(userDetails.getCurrentCourse());
+                        user.setGamesPlayed(userDetails.getGamesPlayed());
+                        user.setWAPlayed(userDetails.getWAPlayed());
+                        user.setRPlayed(userDetails.getRPlayed());
+                        user.setSWPlayed(userDetails.getSWPlayed());
+                        user.setWAWon(userDetails.getWAWon());
+                        user.setSWWon(userDetails.getSWWon());
+                        user.setRWon(userDetails.getRWon());
+                        break;
+                    }
+                }
+                
+                try (FileWriter writer = new FileWriter(file)) {
+                    prettyGson.toJson(users, writer);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to update user details!");
         }
-        switch (defaultDifficulty.toLowerCase()) {
-            case "easy":
-                return "Intermediate";
-            case "intermediate":
-                return "Hard";
-            case "hard":
-                return "Very Hard";
-            default:
-                return "Unknown";
-        }
+    }
+
+
+    
+    private static String getFilePath(String fileName) {
+        String userDir = System.getProperty("user.dir");
+        return userDir + File.separator + "src" + File.separator + "Game" + File.separator + fileName;
     }
 }

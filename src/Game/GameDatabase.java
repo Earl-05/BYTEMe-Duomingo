@@ -15,22 +15,18 @@ public class GameDatabase {
 	private static final String SCRAMBLE_WORD_FILE = getFilePath("scramble_word.json");
 	private static final String USER_FILE = getFilePath("users.json");
 
-    // Load reading game data
     public static LinkedList<String[]> loadReadingData(String language, int difficulty) {
         return loadData(READING_FILE, language, difficulty, new LinkedList<>());
     }
 
-    // Load word association game data
     public static LinkedList<String[]> loadWordAssociationData(String language, int difficulty) {
         return loadData(WORD_ASSOCIATION_FILE, language, difficulty, new LinkedList<>());
     }
 
-    // Load scramble word game data
     public static List<ScrambleWordGame.WordEntry> loadScrambleWordData(String language, int difficulty) {
         return loadWordEntries(SCRAMBLE_WORD_FILE, language, difficulty);
     }
 
-    // Generic method to load simple game data
     private static <T extends Collection<String[]>> T loadData(String fileName, String language, int difficulty, T collection) {
         File file = new File(fileName);
         if (!file.exists()) {
@@ -64,7 +60,7 @@ public class GameDatabase {
         }
     }
 
-    // Load scramble word entries
+
     private static List<ScrambleWordGame.WordEntry> loadWordEntries(String fileName, String language, int difficulty) {
         File file = new File(fileName);
         if (!file.exists()) {
@@ -76,7 +72,7 @@ public class GameDatabase {
             Type type = new TypeToken<Map<String, Map<String, List<Map<String, String>>>>>() {}.getType();
             Map<String, Map<String, List<Map<String, String>>>> data = gson.fromJson(reader, type);
 
-            String level = difficulty == 0 ? "Beginner" : "Intermediate";
+            String level = difficulty == 0 ? "Beginner" : "xIntermediate";
 
             Map<String, List<Map<String, String>>> languageData = data.get(language);
             if (languageData == null) {
@@ -106,7 +102,6 @@ public class GameDatabase {
         }
     }
 
-    // Update user game statistics
     public static void updateGameStats(String userID, String gameType) {
         File file = new File(USER_FILE);
         if (!file.exists()) {

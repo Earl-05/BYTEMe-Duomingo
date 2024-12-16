@@ -1,7 +1,6 @@
 package Game;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class UserDetails {
     private String userID;
@@ -12,24 +11,23 @@ public class UserDetails {
     private String currentCourse;
     private List<String> achievements;
     private String mainLanguage;
-    private int gamesWon;
+    private int gamesPlayed;
     private int WAPlayed;
     private int RPlayed;
     private int SWPlayed;
     private int WAWon;
     private int SWWon;
     private int RWon;
-    
+    private int totalScore;
 
 
     public UserDetails() {
-    	this.achievements = new ArrayList<>();
     }
 
 
 	public UserDetails(String userID, String userName, String password, String email, String birthday,
-			String currentCourse, List<String> achievements, String mainLanguage, int gamesWon, int wAPlayed,
-			int rPlayed, int sWPlayed, int wAWon, int sWWon, int rWon) {
+			String currentCourse, List<String> achievements, String mainLanguage, int gamesPlayed, int wAPlayed,
+			int rPlayed, int sWPlayed, int wAWon, int sWWon, int rWon, int totalScore) {
 		super();
 		this.userID = userID;
 		this.userName = userName;
@@ -37,15 +35,16 @@ public class UserDetails {
 		this.email = email;
 		this.birthday = birthday;
 		this.currentCourse = currentCourse;
-		this.achievements = achievements != null ? achievements : new ArrayList<>();
+		this.achievements = achievements;
 		this.mainLanguage = mainLanguage;
-		this.gamesWon = gamesWon;
+		this.gamesPlayed = gamesPlayed;
 		WAPlayed = wAPlayed;
 		RPlayed = rPlayed;
 		SWPlayed = sWPlayed;
 		WAWon = wAWon;
 		SWWon = sWWon;
 		RWon = rWon;
+		this.totalScore = totalScore;
 	}
 
 
@@ -115,7 +114,7 @@ public class UserDetails {
 
 
 	public void setAchievements(List<String> achievements) {
-		this.achievements = achievements != null ? achievements : new ArrayList<>();
+		this.achievements = achievements;
 	}
 
 
@@ -129,13 +128,13 @@ public class UserDetails {
 	}
 
 
-	public int getGamesWon() {
-		return gamesWon;
+	public int getGamesPlayed() {
+		return gamesPlayed;
 	}
 
 
-	public void setGamesWon(int gamesWon) {
-		this.gamesWon = gamesWon;
+	public void setGamesPlayed(int gamesPlayed) {
+		this.gamesPlayed = gamesPlayed;
 	}
 
 
@@ -167,35 +166,45 @@ public class UserDetails {
 	public void setSWPlayed(int sWPlayed) {
 		SWPlayed = sWPlayed;
 	}
-	
+
+
 	public int getWAWon() {
 		return WAWon;
 	}
-	
+
+
 	public void setWAWon(int wAWon) {
 		WAWon = wAWon;
 	}
-	
+
+
 	public int getSWWon() {
 		return SWWon;
 	}
-	
+
+
 	public void setSWWon(int sWWon) {
 		SWWon = sWWon;
 	}
-	
+
+
 	public int getRWon() {
 		return RWon;
 	}
-	
+
+
 	public void setRWon(int rWon) {
 		RWon = rWon;
 	}
-	
-	public void addAchievement(String achievement) {
-		if (!achievements.contains(achievement)) {
-			achievements.add(achievement);
-		}
+
+
+	public int getTotalScore() {
+		return totalScore;
 	}
-	
+
+
+	public void setTotalScore(int totalScore) {
+		this.totalScore = totalScore;
+	}
+    
 }
