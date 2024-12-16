@@ -1,0 +1,59 @@
+[
+   {
+       "courseCode": "ESP-103",
+       "courseName": "Spanish",
+	   
+       "courseDescription": "Dive into the fascinating world of the Spanish language with this comprehensive course. 
+	   You will learn fundamental vocabulary for everyday conversations, key grammar rules, and proper pronunciation techniques. 
+	   The course includes practical exercises on greetings, numbers, family terms, and common phrases. 
+	   Additionally, you will explore cultural insights into Spanish-speaking countries, making your learning journey both educational and enriching. 
+	   By the end of the course, you will gain the confidence to navigate basic Spanish conversations and understand the structure of this widely spoken language.",
+	   
+       "languages": ["English", "Spanish"]
+   },
+   {
+       "courseCode": "JAP-102",
+       "courseName": "Japanese",
+	   
+       "courseDescription": "Embark on a challenging yet rewarding journey to master the Japanese language. 
+	   This course provides an in-depth study of Japanese vocabulary, grammar structures, and pronunciation, with a strong emphasis on understanding and using Kanji characters effectively. 
+	   You will also learn Hiragana and Katakana scripts, essential for reading and writing in Japanese. 
+	   Lessons include real-life conversational scenarios, polite forms of speech, and an introduction to Japanese culture, such as traditions and etiquettes. 
+	   Perfect for learners seeking fluency, this course will help you unlock the beauty and complexity of Japanese communication.",
+	   
+       "languages": ["English", "Japanese"]
+   },
+   {
+       "courseCode": "FIL-111",
+       "courseName": "Filipino",
+	   
+       "courseDescription": "This beginner-friendly course offers an engaging introduction to Filipino, the national language of the Philippines. 
+	   You will learn foundational vocabulary, sentence structures, and grammar rules that are essential for everyday communication. 
+	   The course includes practical modules on common greetings, basic sentence construction, and frequently used expressions. 
+	   Cultural elements, such as Filipino customs and traditions, are integrated into the lessons, providing you with a richer understanding of the language. 
+	   By the end of this course, you will feel equipped to hold simple conversations in Filipino and appreciate the nuances of this unique language.",
+	   
+       "languages": ["English", "Filipino"]
+   },
+   {
+       "courseCode": "FRE-104",
+       "courseName": "French",
+       "courseDescription": "Immerse yourself in the elegance of the French language with this intermediate-level course. 
+	   Designed for learners with a basic understanding of French, the curriculum delves into advanced vocabulary, verb conjugations, and sentence structures. 
+	   You will practice listening and speaking skills through interactive dialogues and role-playing scenarios. 
+	   Additionally, the course explores French culture, including its art, history, and culinary traditions, enriching your learning experience. 
+	   By the end of the course, you will be able to engage in more complex conversations and deepen your appreciation of French-speaking societies.",
+	   
+       "languages": ["English", "French"]
+   },
+   {
+       "courseCode": "HIL-113",
+       "courseName": "Hiligaynon",
+       "courseDescription": "Explore the basics of Hiligaynon, a regional language spoken in the Western Visayas region of the Philippines. 
+	   This course is designed for beginners and covers key vocabulary, essential grammar rules, and sentence formation. 
+	   You will learn common phrases, greetings, and expressions used in daily life, as well as gain insights into the culture and traditions of Hiligaynon-speaking communities. 
+	   With engaging practice sessions and contextual learning, you will build a strong foundation in the language and develop the ability to communicate effectively in Hiligaynon.",
+	   
+       "languages": ["English", "Hiligaynon"]
+   }
+]
