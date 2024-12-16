@@ -64,7 +64,7 @@ public class GameDatabase {
         }
     }
 
-
+    // Load scramble word entries
     private static List<ScrambleWordGame.WordEntry> loadWordEntries(String fileName, String language, int difficulty) {
         File file = new File(fileName);
         if (!file.exists()) {
@@ -76,7 +76,7 @@ public class GameDatabase {
             Type type = new TypeToken<Map<String, Map<String, List<Map<String, String>>>>>() {}.getType();
             Map<String, Map<String, List<Map<String, String>>>> data = gson.fromJson(reader, type);
 
-            String level = difficulty == 0 ? "Beginner" : "xIntermediate";
+            String level = difficulty == 0 ? "Beginner" : "Intermediate";
 
             Map<String, List<Map<String, String>>> languageData = data.get(language);
             if (languageData == null) {

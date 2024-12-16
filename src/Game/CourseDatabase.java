@@ -7,13 +7,16 @@ import com.google.gson.Gson;
 
 
 
+
+
+
 public class CourseDatabase {
 
     private static final String COURSES_FILE = getFilePath("courses.json");
     private static List<CourseDetails> courses;
 
     static {
-        loadCourses();	
+        loadCourses();
     }
 
     private static void loadCourses() {

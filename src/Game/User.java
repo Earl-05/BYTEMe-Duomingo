@@ -29,8 +29,7 @@ public class User {
                 "Email: <b>" + userDetails.getEmail() + "</b><br>" +
                 "Birthday: <b>" + userDetails.getBirthday() + "</b><br>" +
                 "Current Course: <b>" + (userDetails.getCurrentCourse() == null ? "N/A" : userDetails.getCurrentCourse()) + "</b><br>" +
-                "Main Language: <b>" + userDetails.getMainLanguage() + "</b><br>" +
-                "Your total score: <b> " + userDetails.getTotalScore() + "</b>" +
+                "Main Language: <b>" + userDetails.getMainLanguage() + "</b>" +
                 "</html>");
         userInfo.setFont(new Font("Arial", Font.PLAIN, 14));
         userInfo.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -65,7 +64,7 @@ public class User {
     }
 
     private static void editUserInfo(UserDetails userDetails) {
-        JPanel panel = new JPanel(new GridLayout(5, 2, 10, 10)); // Updated for 5 fields
+        JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));
 
         JLabel nameLabel = new JLabel("User Name:");
         JTextField nameField = new JTextField(userDetails.getUserName());
@@ -75,26 +74,20 @@ public class User {
 
         JLabel birthdayLabel = new JLabel("Birthday (YYYY-MM-DD):");
         JTextField birthdayField = new JTextField(userDetails.getBirthday());
-
-        JLabel passwordLabel = new JLabel("New Password:");
-        JPasswordField passwordField = new JPasswordField();
-
+        
         JButton deleteButton = new JButton("Delete Account");
-        deleteButton.setBackground(new Color(153, 0, 0));
+        deleteButton.setBackground(new Color(153,0,0));
         deleteButton.setForeground(Color.WHITE);
 
         deleteButton.addActionListener(e -> deleteUser(userDetails));
 
-        // Add components to the panel
         panel.add(nameLabel);
         panel.add(nameField);
         panel.add(emailLabel);
         panel.add(emailField);
         panel.add(birthdayLabel);
         panel.add(birthdayField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
-        panel.add(new JLabel()); // Placeholder to align delete button
+        panel.add(new JLabel()); // Placeholder to align the delete button
         panel.add(deleteButton);
 
         int result = JOptionPane.showConfirmDialog(null, panel, "Edit User Info", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -103,12 +96,6 @@ public class User {
             userDetails.setUserName(nameField.getText());
             userDetails.setEmail(emailField.getText());
             userDetails.setBirthday(birthdayField.getText());
-
-            // Update password only if a new one is provided
-            String newPassword = new String(passwordField.getPassword());
-            if (!newPassword.trim().isEmpty()) {
-                userDetails.setPassword(newPassword);
-            }
 
             UserDatabase.updateUser(userDetails);
             JOptionPane.showMessageDialog(null, "User information updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);

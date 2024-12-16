@@ -5,17 +5,19 @@
     "password": "123",
     "email": "raninj55@gmail.com",
     "birthday": "2005-05-15",
-    "currentCourse": "Filipino",
-    "achievements": [],
+    "currentCourse": "Spanish",
+    "achievements": [
+      "First Steps",
+      "Matchmaker"
+    ],
     "mainLanguage": "English",
-    "gamesPlayed": 5,
-    "WAPlayed": 5,
+    "gamesWon": 3,
+    "WAPlayed": 3,
     "RPlayed": 0,
     "SWPlayed": 0,
-    "WAWon": 4,
+    "WAWon": 2,
     "SWWon": 0,
-    "RWon": 0,
-    "totalScore": 298
+    "RWon": 0
   },
   {
     "userID": "928d26c4-ecfc-4e13-92bf-35a2b2e6a65d",
@@ -26,14 +28,13 @@
     "currentCourse": "French",
     "achievements": [],
     "mainLanguage": "English",
-    "gamesPlayed": 0,
+    "gamesWon": 0,
     "WAPlayed": 0,
     "RPlayed": 0,
     "SWPlayed": 0,
     "WAWon": 0,
     "SWWon": 0,
-    "RWon": 0,
-    "totalScore": 0
+    "RWon": 0
   },
   {
     "userID": "6675a11d-affa-4519-bc1f-2e545a4ef15c",
@@ -44,14 +45,13 @@
     "currentCourse": "Spanish",
     "achievements": [],
     "mainLanguage": "English",
-    "gamesPlayed": 0,
+    "gamesWon": 0,
     "WAPlayed": 0,
     "RPlayed": 0,
     "SWPlayed": 0,
     "WAWon": 0,
     "SWWon": 0,
-    "RWon": 0,
-    "totalScore": 0
+    "RWon": 0
   },
   {
     "userID": "358a5f29-ee02-4d3b-8f22-8701cc0d77a6",
@@ -62,13 +62,12 @@
     "currentCourse": "Japanese",
     "achievements": [],
     "mainLanguage": "English",
-    "gamesPlayed": 0,
+    "gamesWon": 0,
     "WAPlayed": 0,
     "RPlayed": 0,
     "SWPlayed": 0,
     "WAWon": 0,
     "SWWon": 0,
-    "RWon": 0,
-    "totalScore": 0
+    "RWon": 0
   }
 ]

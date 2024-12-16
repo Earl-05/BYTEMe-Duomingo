@@ -19,45 +19,46 @@ public class Achievement {
         List<String> achievements = user.getAchievements();
 
         // General Course Achievements
-        if (!achievements.contains("First Steps") && user.getGamesPlayed() >= 1) {
-            achievements.add("First Steps");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: First Steps! Complete your first course.");
+        if (!achievements.contains("First Steps") && user.getGamesWon() >= 1) {
+            user.addAchievement("First Steps");
+            JOptionPane.showMessageDialog(null, "First Steps! Completed your first game.", "Achievement Unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
-        if (!achievements.contains("Polyglot in Training") && user.getGamesPlayed() >= 5) {
-            achievements.add("Polyglot in Training");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Polyglot in Training! Complete 3 courses.");
+        if (!achievements.contains("Polyglot in Training") && user.getGamesWon() >= 10) {
+            user.addAchievement("Polyglot in Training");
+            JOptionPane.showMessageDialog(null, "Polyglot in Training! Completed 10 games.", "Achievement Unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
 
         // Word Association Achievements
-        if (!achievements.contains("Matchmaker") && user.getWAPlayed() >= 1) {
-            achievements.add("Matchmaker");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Matchmaker! You played 1 Word Association game!");
+        if (!achievements.contains("Matchmaker") && user.getWAWon() >= 1) {
+            user.addAchievement("Matchmaker");
+            JOptionPane.showMessageDialog(null, "Matchmaker! You won 1 Word Association game!", "Achievement Unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
-        if (!achievements.contains("Word Wizard") && user.getWAPlayed() >= 10) {
-            achievements.add("Word Wizard");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Word Wizard! You played 10 Word Association games!");
+        if (!achievements.contains("Word Wizard") && user.getWAWon() >= 10) {
+            user.addAchievement("Word Wizard");
+            JOptionPane.showMessageDialog(null, "Word Wizard! You won 10 Word Association games!", "Achievement Unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
 
         // Reading Achievements
-        if (!achievements.contains("Bookworm Beginner") && user.getRPlayed() >= 3) {
-            achievements.add("Bookworm Beginner");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Bookworm Beginner! You played 3 Reading games.");
+        if (!achievements.contains("Bookworm Beginner") && user.getRWon() >= 3) {
+            user.addAchievement("Bookworm Beginner");
+            JOptionPane.showMessageDialog(null, "Bookworm Beginner! You won 3 Reading games.", "Achievement Unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
-        if (!achievements.contains("Narrative Ninja") && user.getRPlayed() >= 10) {
-            achievements.add("Narrative Ninja");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Narrative Ninja! You played 10 Reading games!");
+        if (!achievements.contains("Narrative Ninja") && user.getRWon() >= 10) {
+            user.addAchievement("Narrative Ninja");
+            JOptionPane.showMessageDialog(null, "Narrative Ninja! You won 10 Reading games!", "Achievement Unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
 
         // Scramble Word Game Achievements
-        if (!achievements.contains("Scrambler") && user.getSWPlayed() >= 1) {
-            achievements.add("Scrambler");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Scrambler! You played 1 Scramble Word Game.");
+        if (!achievements.contains("Scrambler") && user.getSWWon() >= 1) {
+            user.addAchievement("Scrambler");
+            JOptionPane.showMessageDialog(null, "Scrambler! You won 1 Scramble Word Game.", "Achievement Unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
-        if (!achievements.contains("Word Scrambler Pro") && user.getSWPlayed() >= 5) {
-            achievements.add("Word Scrambler Pro");
-            JOptionPane.showMessageDialog(null, "Achievement Unlocked: Word Scrambler Pro! You played 5 Scramble Word Games.");
+        if (!achievements.contains("Word Scrambler Pro") && user.getSWWon() >= 5) {
+            user.addAchievement("Word Scrambler Pro");
+            JOptionPane.showMessageDialog(null, "Word Scrambler Pro! You won 5 Scramble Word Games.", "Achievement Unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
 
+        // Update the JSON file
         updateUserInFile(user);
     }
 

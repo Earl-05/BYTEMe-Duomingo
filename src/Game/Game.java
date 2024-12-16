@@ -13,13 +13,13 @@ public class Game {
         }
 
         boolean keepPlaying = true;
-        int sessionScore = 0; // Tracks the score for the current session.
+        int totalScore = 0;
 
         while (keepPlaying) {
 
             String[] gameOptions = {
                 "Word Association",
-                "Scramble Word Game",
+                "Scramble Word Game", // Replaced Word Guessing with Scramble Word Game
                 "Reading",
                 "Exit"
             };
@@ -35,40 +35,32 @@ public class Game {
                     null, gameOptions, gameOptions[0]);
 
             switch (gameChoice) {
-                case 0 -> { // Word Association
+                case 0 -> {
                     int difficulty = chooseDifficulty(currentCourse.getDifficulty());
                     int result = new WordAssociation(difficulty, currentCourse.getCourseName(), userDetails).playGame();
                     if (result == -1) {
                         continue;
                     }
-                    sessionScore += result; // Add session score.
-                    UserDatabase.updateStats(userDetails.getUserID(), "WAPlayed", result);
+                    totalScore += result;
                 }
-                case 1 -> { // Scramble Word Game
+                case 1 -> {
                     int difficulty = chooseDifficulty(currentCourse.getDifficulty());
-                    int result = new ScrambleWordGame(difficulty, currentCourse.getCourseName()).playGame();
+                    int result = new ScrambleWordGame(difficulty, currentCourse.getCourseName()).playGame(); // Integrated ScrambleWordGame
                     if (result == -1) {
                         continue;
                     }
-                    sessionScore += result; // Add session score.
-                    UserDatabase.updateStats(userDetails.getUserID(), "SWPlayed", result);
+                    totalScore += result;
                 }
-                case 2 -> { // Reading
+                case 2 -> {
                     int difficulty = chooseDifficulty(currentCourse.getDifficulty());
                     int result = new Reading(difficulty, currentCourse.getCourseName()).playGame();
                     if (result == -1) {
                         continue;
                     }
-                    sessionScore += result; // Add session score.
-                    UserDatabase.updateStats(userDetails.getUserID(), "RPlayed", result);
+                    totalScore += result;
                 }
                 case 3, -1 -> {
-                    userDetails.setTotalScore(userDetails.getTotalScore() + sessionScore);
-                    UserDatabase.updateUser(userDetails); 
-
-                    JOptionPane.showMessageDialog(null, "Thank you for playing! Your total score for this session is: " + sessionScore
-                            + "\nYour lifetime total score is now: " + userDetails.getTotalScore());
-
+                    JOptionPane.showMessageDialog(null, "Thank you for playing! Your total score is: " + totalScore);
                     keepPlaying = false;
                     User.welcomeUser(userDetails);
                 }

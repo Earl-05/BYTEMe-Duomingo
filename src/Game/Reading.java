@@ -39,7 +39,7 @@ public class Reading extends GameBase {
         
         String instructionMessage;
 
-        if (getDifficulty() == 0) {
+        if (difficulty == 0) {
             instructionMessage = "Welcome to the Reading Game!\n"
                 + "1. You will be presented with a sentence and a question based on context clues.\n"
                 + "2. Choose the correct answer from the multiple-choice options.\n"
@@ -60,7 +60,7 @@ public class Reading extends GameBase {
 
         int attempts = 0, score = 0;
         long startTime = System.currentTimeMillis();
-        int maxTime = getDifficulty() == 0 ? 90 : 60;
+        int maxTime = difficulty == 0 ? 90 : 60;
         int maxQuestions = questions.size();
 
         for (int i = 0; i < maxQuestions; i++) {
